@@ -1,0 +1,33 @@
+body {
+    background-color: #b0c4de;
+} 
+
+a {
+	color: #0000FF;
+}
+
+.center {
+	text-align: center;
+}
+
+.success {
+	background-color: #009900;
+}
+
+.error {
+	background-color: red;
+}
+
+/*Partie Connection*/
+#formConnection{
+	text-align: center;
+}
+
+#formConnection label{
+	text-align: center;
+	display: inline-block;
+	width: 150px;
+}
+
+#notif {
+}
