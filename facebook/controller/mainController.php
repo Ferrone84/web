@@ -54,6 +54,7 @@ class mainController
 
 	public static function logout($request,$context){
 		session_destroy();
+		$context->redirect("facebook.php");
 		return context::NONE;
 	}
 }

@@ -13,12 +13,13 @@ function logout() {
 		cache: false,
 		contentType: false,
 		processData: false,
-		success: function()	{
-			$("#notif").html("<span class=\"success\">Vous vous êtes bien déconnecté.</span>")/*.fadeIn(800).delay(800).fadeOut(1500)*/;
-			$("#logout").empty(); //évite le spam du bouton
+		success: function(data)	{
+			$("#notif").html("<span class=\"success\">Vous vous êtes bien déconnecté.</span>");
+			retour_view = $(data).filter('#view').html(); //récuppère tout ce qui est contenu dans la div avec l'id view
+			$("#view").empty().append(retour_view);
 		},
 		error: function() {
-			$("#notif").html("<span class=\"error\">Erreur lors de la déconnexion.</span>").fadeIn(800).delay(800).fadeOut(1500);
+			$("#notif").html("<span class=\"error\">Erreur lors de la déconnexion.</span>");
 		}
 	});
 }
