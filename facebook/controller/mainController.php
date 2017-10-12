@@ -7,7 +7,6 @@
 
 class mainController
 {
-
 	public static function helloWorld($request,$context)
 	{
 		$context->mavariable="hello world";
@@ -54,6 +53,7 @@ class mainController
 
 	public static function logout($request,$context){
 		session_destroy();
+		$context->redirect("facebook.php");
 		return context::NONE;
 	}
 }

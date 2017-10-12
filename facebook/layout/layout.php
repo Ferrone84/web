@@ -11,7 +11,7 @@
 <body>
 	<!-- Zone de notification -->
 	<div id="notif" class="center"><?=$context->notif?></div>
-	<?php include($template_view); ?>
+	<div id="view"><?php include($template_view); ?></div>
     
 </body>
 </html>
