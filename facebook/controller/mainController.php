@@ -62,7 +62,6 @@ class mainController
 			$id = strip_tags($request['id']);
 			if (utilisateurTable::getUserById($id) !== NULL) {
 				$context->messages = messageTable::getMessages($id);
-				//var_dump($context->messages);
 				return context::SUCCESS;
 			}
 			else {

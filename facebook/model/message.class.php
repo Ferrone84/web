@@ -17,7 +17,10 @@ class message{
 	/** @Column(type="integer") */ 
 	public $destinataire;
 
-	/** @Column(type="integer") */ 
+	/** @Column(type="integer") 
+	 *  @OneToOne(targetEntity="utilisateur")
+	 *  @JoinColumn(name="parent", referencedColumnName="id")
+	 */ 
 	public $parent;
 
 	/** @Column(type="integer") */ 
