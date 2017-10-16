@@ -60,14 +60,17 @@ class mainController
 	public static function showMessage($request, $context) {		
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
-			//$context->user = utilisateurTable::getUserById($id);
-			//var_dump($context->user);
-			//$context->messages = messageTable::getMessages($id);
-			//var_dump($context->messages);
-			$context->users = utilisateurTable::getUsers();
-			var_dump($context->users);
+			if (utilisateurTable::getUserById($id) !== NULL) {
+				$context->messages = messageTable::getMessages($id);
+				//var_dump($context->messages);
+				return context::SUCCESS;
+			}
+			else {
+				$context->notif = "<span class=\"error\">Veuillez saisir un id valide.</span>";
+				return context::ERROR;
+			}
 		}
-
-		return context::SUCCESS;
+		$context->notif = "<span class=\"error\">Veuillez saisir un id.</span>";
+		return context::ERROR;
 	}
 }

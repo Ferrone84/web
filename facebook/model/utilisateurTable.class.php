@@ -13,6 +13,11 @@ class utilisateurTable {
 		return $user; 
 	}
 
+	/**
+	* Renvoie l'utilisateur grâce à son id
+	*
+	* @author Duret Nicolas
+	*/
 	public static function getUserById($id){
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
@@ -22,11 +27,16 @@ class utilisateurTable {
 		return $user; 
 	}
 
+	/**
+	* Renvoie tous les utilisateurs de la base
+	*
+	* @author Duret Nicolas
+	*/
 	public static function getUsers() {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
 		$userRepository = $em->getRepository('utilisateur');
-		$users = $userRepository->find();
+		$users = $userRepository->findAll();
 
 		return $users;
 	}
