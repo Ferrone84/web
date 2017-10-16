@@ -26,7 +26,7 @@ class utilisateurTable {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
 		$userRepository = $em->getRepository('utilisateur');
-		$users = $userRepository->find();
+		$users = $userRepository->findAll();
 
 		return $users;
 	}
