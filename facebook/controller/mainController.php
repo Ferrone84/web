@@ -57,7 +57,13 @@ class mainController
 		return context::NONE;
 	}
 
-	public static function showMessage($request, $context) {		
+
+	// la partie en commentaires permet de tester getChats(). Penser a mettre la partie non commentée en commentaires. @LE VEVE Mathieu
+	// la partie non commentée teste getUsers et getMessages @DURET Nicolas
+	public static function showMessage($request, $context) {	
+		//$context->chats = chatTable::getChats();	
+		//$context->lastChat = chatTable::getLastChat();	
+
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 			if (utilisateurTable::getUserById($id) !== NULL) {
@@ -72,5 +78,6 @@ class mainController
 		}
 		$context->notif = "<span class=\"error\">Veuillez saisir un id.</span>";
 		return context::ERROR;
+		//return context::SUCCESS;
 	}
 }
