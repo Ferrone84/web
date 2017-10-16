@@ -12,6 +12,24 @@ class utilisateurTable {
 
 		return $user; 
 	}
+
+	public static function getUserById($id){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$userRepository = $em->getRepository('utilisateur');
+		$user = $userRepository->findOneById(array('id' => $id));
+
+		return $user; 
+	}
+
+	public static function getUsers() {
+		$em = dbconnection::getInstance()->getEntityManager() ;
+
+		$userRepository = $em->getRepository('utilisateur');
+		$users = $userRepository->find();
+
+		return $users;
+	}
 }
 
 ?>
