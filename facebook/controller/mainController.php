@@ -7,7 +7,6 @@
 
 class mainController
 {
-
 	public static function helloWorld($request,$context)
 	{
 		$context->mavariable="hello world";
