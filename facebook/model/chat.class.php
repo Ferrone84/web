@@ -1,3 +1,5 @@
+<!-- @AUTHOR: LE VEVE Mathieu -->
+<!-- @DATE: 2017-10-16 -->
 <?php
 
 /** 
@@ -14,7 +16,10 @@ class chat{
 	/** @Column(type="integer") */ 
 	public $emetteur;
 
-	/** @Column(type="integer") */ 
+	/** @Column(type="integer") *
+	* @OneToMany(targetEntity="chat", mappedBy="post")
+	* @JoinColumn(name="post", referencedColumnName="id")
+	*/
 	public $post;
 }
 
