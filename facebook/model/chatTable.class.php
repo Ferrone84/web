@@ -27,11 +27,8 @@ class chatTable {
 	public static function getLastChat(){
 		$ch = dbconnection::getInstance()->getEntityManager() ;
 		$chatRepository = $ch->getRepository('chat');
-		$idLastChat = /* recuperer l'id du dernier chat */
-		/* to do:  récupérer le dernier post  grâce aux tag jointures non testées encore */
-		//$chats = $chatRepository->findOneBy(array('id' = ...)); 
-		// ne retourne qu'un seul résultat
-		return $chats;
+		$chat = $chatRepository->findOneBy(array(), array("id" => "DESC")); //sélectionne le premier élément de la table en partant de la fin
+		return $chat;
 	}
 }
 

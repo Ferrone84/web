@@ -6,7 +6,7 @@
  */
 class utilisateur{
 
-	/** @Id @Column(type="integer")
+	/** @Id @Column(name="id", type="integer")
 	 *  @GeneratedValue
 	 */ 
 	public $id;

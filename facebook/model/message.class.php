@@ -11,19 +11,28 @@ class message{
 	 */ 
 	public $id;
 
-	/** @Column(type="integer") */ 
+	/**
+	 *  @OneToOne(targetEntity="utilisateur", cascade={"remove", "persist"})
+	 *  @JoinColumn(name="emetteur", referencedColumnName="id")
+	 */ 
 	public $emetteur;
 
-	/** @Column(type="integer") */ 
+	/**
+	 *  @OneToOne(targetEntity="utilisateur", cascade={"remove", "persist"})
+	 *  @JoinColumn(name="destinataire", referencedColumnName="id")
+	 */ 
 	public $destinataire;
 
-	/** @Column(type="integer") 
-	 *  @OneToOne(targetEntity="utilisateur")
+	/** 
+	 *  @OneToOne(targetEntity="utilisateur", cascade={"remove", "persist"})
 	 *  @JoinColumn(name="parent", referencedColumnName="id")
 	 */ 
 	public $parent;
 
-	/** @Column(type="integer") */ 
+	/** 
+	 *  @OneToOne(targetEntity="post", cascade={"remove", "persist"})
+	 *  @JoinColumn(name="post", referencedColumnName="id")
+	 */ 
 	public $post;
 
 	/** @Column(type="integer") */ 

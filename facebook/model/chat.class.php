@@ -13,13 +13,16 @@ class chat{
 	 */ 
 	public $id;
 
-	/** @Column(type="integer") */ 
+	/**
+	 *  @OneToOne(targetEntity="utilisateur", cascade={"remove", "persist"})
+	 *  @JoinColumn(name="emetteur", referencedColumnName="id")
+	 */
 	public $emetteur;
 
-	/** @Column(type="integer") *
-	* @OneToMany(targetEntity="chat", mappedBy="post")
-	* @JoinColumn(name="post", referencedColumnName="id")
-	*/
+	/**
+	 *  @OneToOne(targetEntity="post", cascade={"remove", "persist"})
+	 *  @JoinColumn(name="post", referencedColumnName="id")
+	 */
 	public $post;
 }
 
