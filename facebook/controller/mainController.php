@@ -65,7 +65,7 @@ class mainController
 			if ($context->user !== NULL) {
 				$context->messages = messageTable::getMessagesByDestinataire($id);
 				if($context->messages) {
-					$context->notif = "<span class=\"success\">Voici les messages dans lesquels vous êtes cité.</span>";
+					$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
 					return context::SUCCESS;
 				}
 				$context->notif = "<span class=\"error\">Cet utilisateur n'a pas de messages.</span>";

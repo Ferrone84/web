@@ -32,6 +32,10 @@ class utilisateur{
 	/** @Column(type="datetime", length=4000) */ 
 	public $date_de_naissance;
 	
+	/**
+	 *
+	 */
+	public $messages;
 }
 
 ?>
