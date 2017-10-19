@@ -63,8 +63,8 @@ class mainController
 			$id = strip_tags($request['id']);
 			$context->user = utilisateurTable::getUserById($id);
 			if ($context->user !== NULL) {
-				$context->messages = messageTable::getMessagesByDestinataire($id);
-				if($context->messages) {
+				$context->messages = $context->user->messages; //raccourcit
+				if($context->messages[0] != NULL) { //vérifie si l'utilisateur a des messages
 					$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
 					return context::SUCCESS;
 				}

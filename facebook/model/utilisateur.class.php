@@ -33,7 +33,7 @@ class utilisateur{
 	public $date_de_naissance;
 	
 	/**
-	 *
+	 * @OneToMany(targetEntity="message", mappedBy="destinataire")
 	 */
 	public $messages;
 }
