@@ -22,7 +22,7 @@ class utilisateurTable {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
 		$userRepository = $em->getRepository('utilisateur');
-		$user = $userRepository->findOneById(array('id' => $id));
+		$user = $userRepository->findOneById($id);
 
 		return $user; 
 	}
