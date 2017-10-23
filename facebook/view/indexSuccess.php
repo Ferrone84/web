@@ -6,3 +6,9 @@ Bienvenue dans l'index ! <a href="facebook.php">Page par défaut</a> <br>
 	<input type="number" name="id"/> 
 	<input type="submit" name="subformSM" value="show messages">
 </form>
+
+<br><br>
+<form action="facebook.php?action=displayFriendList&amp;id=" method="POST" id="formFL">
+	<input type="number" name="id"/> 
+	<input type="submit" name="subformFL" value="show friends">
+</form>

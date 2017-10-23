@@ -80,17 +80,20 @@ class mainController
 		return context::ERROR;
 	}
 
+	// partie LVM
 	public static function displayFriendList($request, $context){
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 			$context->user = utilisateurTable::getUserById($id);
 			if ($context->user !== NULL) {
-				//$context->
+				$context->users = utilisateurTable::getUsers();
+				return context::SUCCESS;
 			}
 
-		}
+			return context::ERROR;
 
-		return context::ERROR;
+		}
+		else return context::ERROR;
 
 	}
 
