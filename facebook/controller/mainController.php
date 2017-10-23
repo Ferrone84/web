@@ -93,4 +93,10 @@ class mainController
 		return context::ERROR;
 
 	}
+
+	public static function profil($request, $context) {
+		$context->user = $context->getSessionAttribute('user_id');
+
+		return context::SUCCESS;
+	}
 }
