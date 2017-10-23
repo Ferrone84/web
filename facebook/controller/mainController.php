@@ -79,4 +79,18 @@ class mainController
 		$context->notif = "<span class=\"error\">Veuillez saisir un id.</span>";
 		return context::ERROR;
 	}
+
+	public static function displayFriendList($request, $context){
+		if (!empty($request['id'])) {
+			$id = strip_tags($request['id']);
+			$context->user = utilisateurTable::getUserById($id);
+			if ($context->user !== NULL) {
+				//$context->
+			}
+
+		}
+
+		return context::ERROR;
+
+	}
 }
