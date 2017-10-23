@@ -31,3 +31,11 @@ a {
 
 #notif {
 }
+
+
+.user-scrollable{
+	width:249px;
+    height:299px;
+    background-color:Gray;
+    overflow-y: scroll;
+}
