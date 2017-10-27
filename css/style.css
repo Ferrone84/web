@@ -10,12 +10,123 @@ a {
 	text-align: center;
 }
 
+.centrerElem {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
 .success {
 	background-color: #009900;
 }
 
 .error {
 	background-color: red;
+}
+
+/*Header*/
+#header, #header-infos, #header-menu{
+	/*width: 100%;*/
+	z-index: 10;
+}
+
+#header{
+	background-color: #1da1f2;
+	/*position: fixed;*/
+	padding-bottom: 0.3em;
+}
+
+#header-infos{
+	background-color: red;
+}
+
+#header-image-avi{
+	padding-top: 0.3em;
+	padding-left: 0.3em;
+	float: left;
+}
+
+#img-avi{
+	width: 70px;
+	height: 100px;
+}
+
+#header-image-facebook{
+	padding-top: 1.2em;
+	padding-right: 0.3em;
+	float: right;
+}
+
+#img-facebook{
+	width: 70px;
+	height: 70px;
+}
+
+#header-menu{
+	position: relative;
+	top: -4px;
+	/*width: 80%;*/
+	height: 50px;
+	background: linear-gradient(#7cb7ff, #1b81ff);
+	border-radius: 0px 0px 4px 4px;
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2),
+				0px 1px 0px 1px rgba(255,255,255,0.5) inset,
+				0px -3px 0px 1px rgba(0,0,0,0.1) inset;
+	/*margin-left: 10%;*/
+	/*margin-right: 10%;*/
+}
+
+#header-menu-ul{
+	font-family: "Trebuchet MS";
+	margin-right: auto;
+	margin-left: auto;
+	display: table;
+	padding: 0;
+	margin-top: 0;
+}
+
+#header-menu-ul li{
+	display: table-cell;
+	width: 180px;
+	transition: 1s;
+}
+
+#header-menu-ul li:hover{
+	width: 190px;
+	transition: 1s;
+}
+
+#header-menu-ul a{
+	color : white;
+	text-decoration: none;
+	display: block;
+	line-height: 46px;
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(0,0,0,0.2);
+	transition: text-shadow, color 1s;
+	position: relative;
+}
+
+#header-menu-ul a:hover{
+	color: black;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.2);
+	transition: text-shadow, color 1s;
+	background: rgba(255,255,255,0.1);
+	border-bottom: 4px solid rgba(255,255,255,0.8);
+}
+
+#header-menu-ul a::before{
+	content: '';
+	position: absolute;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-top: 5px solid rgba(0,0,0,0.2);
+	left: 48%;
+	bottom: 5px;
+}
+
+#header-menu-ul a::before:hover{
+	color: white;
 }
 
 /*Partie Connection*/
@@ -32,10 +143,52 @@ a {
 #notif {
 }
 
-
+/* Partie ami */
 .user-scrollable{
 	width:249px;
     height:299px;
     background-color:Gray;
     overflow-y: scroll;
+}
+
+/* Partie profil */
+#profil {
+	background-color: white;
+	/*padding: 1.5em;*/
+	/*display: inline-block;*/
+	/*box-sizing: border-box;*/
+	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
+				0 -1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+#profil_avatar {
+	width:	80px;
+	height: 80px;
+	box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2),
+				0px 2px 0px 2px rgba(255,255,255,0.5) inset,
+				0px -6px 0px 2px rgba(0,0,0,0.1) inset;
+}
+
+#profil_infos {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	width:	60%;
+	top: 30px;
+}
+
+#profil_nom{
+	font-weight: bold;
+}
+
+#profil_statut{
+	font-style: italic;
+}
+
+#profil_statut::before {
+	content: 'statut : « ';
+}
+
+#profil_statut::after {
+	content: ' »';
 }

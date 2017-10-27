@@ -98,8 +98,25 @@ class mainController
 	}
 
 	public static function profil($request, $context) {
-		$context->user = $context->getSessionAttribute('user_id');
+		$id = $context->getSessionAttribute('user_id');
+		$context->current_user = utilisateurTable::getUserById($id);
+		if (!empty($request['id'])) {
+			$id = strip_tags($request['id']);
+			$context->user = utilisateurTable::getUserById($id);
+		}
+		else
+			$context->user = $context->current_user;
+
+		$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+		if ($context->user->avatar != NULL)
+			$context->avatar = $context->user->avatar;
+
+		
 
 		return context::SUCCESS;
+	}
+
+	public static function headband($request, $context) {
+		
 	}
 }

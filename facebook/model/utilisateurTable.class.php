@@ -10,7 +10,7 @@ class utilisateurTable {
 		$userRepository = $em->getRepository('utilisateur');
 		$user = $userRepository->findOneBy(array('identifiant' => $login, 'pass' => sha1($pass)));
 
-		return $user; 
+		return $user;
 	}
 
 	/**
@@ -20,7 +20,6 @@ class utilisateurTable {
 	*/
 	public static function getUserById($id){
 		$em = dbconnection::getInstance()->getEntityManager() ;
-
 		$userRepository = $em->getRepository('utilisateur');
 		$user = $userRepository->findOneById($id);
 
@@ -40,6 +39,12 @@ class utilisateurTable {
 
 		return $users;
 	}
-}
 
+	public static function updateUser($user) {
+		$em = dbconnection::getInstance()->getEntityManager() ;
+		$em->flush($user);
+	}
+}
+//$em->persist($obj); //nouvel objet
+//$em->flush($obj); //update bdd
 ?>
