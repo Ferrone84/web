@@ -24,13 +24,12 @@ class context
 	}
 	public function init($name)
 	{
-	   $this->name=$name;
-	   
+		$this->name=$name; 
 	}
 	
 	public function getLayout()
 	{
-		 return $this->layout;
+		return $this->layout;
 	}
 
 	public function setLayout($layout)
@@ -74,7 +73,7 @@ class context
 	
 	
 	
-public function __get($prop)
+	public function __get($prop)
 	{
 		if(array_key_exists($prop, $this->data)) //si la clef existe on la retourne
 			return $this->data[$prop];  
@@ -85,6 +84,4 @@ public function __get($prop)
 	{
 		$this->data[$prop]=$value;      
 	}
-	
-		
 }

@@ -24,6 +24,8 @@ class mainController
 		if($context->getSessionAttribute('user_id') != NULL) 
 			$context->redirect("facebook.php");
 
+		$context->setLayout("layoutLogin");
+
 		//si le formulaire est envoyé
 		if(isset($request['formConnec'])){
 			if(!empty($request['login']) && !empty($request['mdp'])) { //si les informations ne sont pas vides
@@ -40,6 +42,7 @@ class mainController
 					return context::ERROR;
 				}
 
+				$context->setLayout("layout");
 				return context::SUCCESS;
 			}
 			else {
@@ -107,16 +110,17 @@ class mainController
 		else
 			$context->user = $context->current_user;
 
+		//----- variable contenant l'avatar -----
 		$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
 		if ($context->user->avatar != NULL)
 			$context->avatar = $context->user->avatar;
 
-		
+		//----- modifier le statut -----
+		if (!empty($request['modif_statut'])) {
+			$context->user->statut = $request['modif_statut'];
+			utilisateurTable::updateUser($context->user);
+		}
 
 		return context::SUCCESS;
-	}
-
-	public static function headband($request, $context) {
-		
 	}
 }

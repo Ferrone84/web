@@ -1,9 +1,16 @@
 body {
-    background-color: #b0c4de;
+    background-color: #e9ebee;
 } 
 
 a {
 	color: #0000FF;
+}
+
+li {
+	border-left: 1px solid gray;
+}
+li:first-child {
+	border-left: none;
 }
 
 .center {
@@ -25,14 +32,134 @@ a {
 }
 
 /*Header*/
+#header {
+	background-color: #4267b2;
+	height: 42px;
+	margin-bottom: 1px;
+}
+
+#header-infos {
+	position: relative;
+	top: 6px;
+}
+
+#header-image-facebook{
+	float: left;
+}
+
+#img-facebook{
+	width: 28px;
+	height: 28px;
+}
+
+#header-menu{
+}
+
+#header-menu-ul{
+	display: table;
+	vertical-align: middle;
+}
+
+#header-menu-ul li{
+	display: table-cell;
+	text-align: center;
+}
+
+#header-menu-ul li a{
+	color: white;
+}
+
+#header-menu-ul li a img{
+	margin-right: 5px;
+	width: 28px;
+	height: 28px;
+}
+
+#header-menu-ul li a span{
+	vertical-align: middle;
+}
+
+
+/*Partie Connection*/
+#login {
+	background-color: #4267b2;
+}
+
+#loginTitle {
+	color: white;
+}
+
+#formConnection{
+	text-align: center;
+}
+
+#formConnection label{
+	text-align: center;
+	display: inline-block;
+	width: 150px;
+}
+
+#notif {
+}
+
+/* Partie ami */
+.user-scrollable{
+	width:249px;
+    height:299px;
+    background-color:Gray;
+    overflow-y: scroll;
+}
+
+/* Partie profil */
+#profil {
+	background-color: white;
+	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
+				0 -1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+#profil_avatar {
+	/*box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2),
+				0px 2px 0px 2px rgba(255,255,255,0.5) inset,
+				0px -6px 0px 2px rgba(0,0,0,0.1) inset;*/
+}
+
+#profil_infos {
+	/*display: inline-block;*/
+	text-align: center;
+	/*position: relative;
+	top: 30px;*/
+}
+
+#profil_nom{
+	font-weight: bold;
+}
+
+#profil_statut{
+	font-style: italic;
+	/*max-width: 250px;*/
+}
+
+#profil_statut::before {
+	content: '« ';
+}
+
+#profil_statut::after {
+	content: ' »';
+}
+
+
+
+
+
+/*  ---- poubelle ----
+
+
 #header, #header-infos, #header-menu{
-	/*width: 100%;*/
 	z-index: 10;
 }
 
 #header{
 	background-color: #1da1f2;
-	/*position: fixed;*/
 	padding-bottom: 0.3em;
 }
 
@@ -65,15 +192,12 @@ a {
 #header-menu{
 	position: relative;
 	top: -4px;
-	/*width: 80%;*/
 	height: 50px;
 	background: linear-gradient(#7cb7ff, #1b81ff);
 	border-radius: 0px 0px 4px 4px;
 	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2),
 				0px 1px 0px 1px rgba(255,255,255,0.5) inset,
 				0px -3px 0px 1px rgba(0,0,0,0.1) inset;
-	/*margin-left: 10%;*/
-	/*margin-right: 10%;*/
 }
 
 #header-menu-ul{
@@ -127,68 +251,4 @@ a {
 
 #header-menu-ul a::before:hover{
 	color: white;
-}
-
-/*Partie Connection*/
-#formConnection{
-	text-align: center;
-}
-
-#formConnection label{
-	text-align: center;
-	display: inline-block;
-	width: 150px;
-}
-
-#notif {
-}
-
-/* Partie ami */
-.user-scrollable{
-	width:249px;
-    height:299px;
-    background-color:Gray;
-    overflow-y: scroll;
-}
-
-/* Partie profil */
-#profil {
-	background-color: white;
-	/*padding: 1.5em;*/
-	/*display: inline-block;*/
-	/*box-sizing: border-box;*/
-	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
-				0 -1px 0 rgba( 255, 255, 255, 0.4);
-}
-
-#profil_avatar {
-	width:	80px;
-	height: 80px;
-	box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2),
-				0px 2px 0px 2px rgba(255,255,255,0.5) inset,
-				0px -6px 0px 2px rgba(0,0,0,0.1) inset;
-}
-
-#profil_infos {
-	display: inline-block;
-	text-align: center;
-	position: relative;
-	width:	60%;
-	top: 30px;
-}
-
-#profil_nom{
-	font-weight: bold;
-}
-
-#profil_statut{
-	font-style: italic;
-}
-
-#profil_statut::before {
-	content: 'statut : « ';
-}
-
-#profil_statut::after {
-	content: ' »';
-}
+}*/
