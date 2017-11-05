@@ -7,6 +7,7 @@
 		<title>Facebook</title>
 		<link rel="icon" type="image/png" href="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png">
 		<link rel="stylesheet" type="text/css" href="lib/core/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
@@ -14,11 +15,14 @@
 		<div id="notif" class="center"><?=$context->notif?></div>
 		<div id="view">
 			<div class="container">
+			<?php include($template."headband.php"); ?>
 			<?php include($template_view); ?>
+			<?php addView("chat"); ?>
 			</div>
 		</div>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="lib/core/vendor/bootstrap/js/bootstrap.min.js"></script>
 	</body>

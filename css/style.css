@@ -1,5 +1,5 @@
 body {
-    background-color: #e9ebee;
+	background-color: #e9ebee;
 } 
 
 a {
@@ -31,7 +31,7 @@ li:first-child {
 	background-color: red;
 }
 
-/*Header*/
+/*Header : headband*/
 #header {
 	background-color: #4267b2;
 	height: 42px;
@@ -105,9 +105,9 @@ li:first-child {
 /* Partie ami */
 .user-scrollable{
 	width:249px;
-    height:299px;
-    background-color:Gray;
-    overflow-y: scroll;
+	height:299px;
+	background-color:Gray;
+	overflow-y: scroll;
 }
 
 /* Partie profil */
@@ -118,16 +118,11 @@ li:first-child {
 }
 
 #profil_avatar {
-	/*box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2),
-				0px 2px 0px 2px rgba(255,255,255,0.5) inset,
-				0px -6px 0px 2px rgba(0,0,0,0.1) inset;*/
+	margin-top: 2px;
 }
 
 #profil_infos {
-	/*display: inline-block;*/
 	text-align: center;
-	/*position: relative;
-	top: 30px;*/
 }
 
 #profil_nom{
@@ -136,7 +131,6 @@ li:first-child {
 
 #profil_statut{
 	font-style: italic;
-	/*max-width: 250px;*/
 }
 
 #profil_statut::before {
@@ -148,7 +142,20 @@ li:first-child {
 }
 
 
+/* Partie chat */
+#chat {
+	background-color: blue;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 20%;
+	min-height: 30%;
+}
 
+.resizable {
+	overflow: scroll;
+	resize: both;
+}
 
 
 /*  ---- poubelle ----

@@ -100,7 +100,14 @@ class mainController
 
 	}
 
+	/**
+	* Action pour le profil de l'utilisateur
+	*
+	* @author Duret Nicolas
+	*/
 	public static function profil($request, $context) {
+		$context->setLayout("layoutProfil");
+
 		$id = $context->getSessionAttribute('user_id');
 		$context->current_user = utilisateurTable::getUserById($id);
 		if (!empty($request['id'])) {
@@ -117,9 +124,15 @@ class mainController
 
 		//----- modifier le statut -----
 		if (!empty($request['modif_statut'])) {
-			$context->user->statut = $request['modif_statut'];
+			$context->user->statut = strip_tags($request['modif_statut']);
 			utilisateurTable::updateUser($context->user);
 		}
+
+		return context::SUCCESS;
+	}
+
+	public static function chat($request, $context) {
+		$context->testos = "42";
 
 		return context::SUCCESS;
 	}

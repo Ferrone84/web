@@ -4,6 +4,9 @@ $(document).ready(function(){
 		event.preventDefault(); //évite le comportement par défault du lien
 		logout();
 	});
+
+	$("#chat").resizable().draggable();
+
 });
 
 function logout() {
