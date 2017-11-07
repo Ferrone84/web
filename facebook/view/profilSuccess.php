@@ -14,7 +14,7 @@
 		<?php if ($context->current_user == $context->user) : ?>
 		<div class="row center">
 			<form action="facebook.php?action=profil" method="POST">
-				<input type="text" name="modif_statut" maxlength="325" placeholder="Changer son statut"/>
+				<input type="text" name="modif_statut" placeholder="Changer son statut"/>
 				<button type="submit" class="btn btn-default btn-sm">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>

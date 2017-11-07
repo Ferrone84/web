@@ -133,6 +133,9 @@ class mainController
 
 	public static function chat($request, $context) {
 		$context->testos = "42";
+		$context->chats = chatTable::getChats();
+		$id = $context->getSessionAttribute('user_id');
+		$context->user = utilisateurTable::getUserById($id);
 
 		return context::SUCCESS;
 	}

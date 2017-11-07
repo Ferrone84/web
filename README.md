@@ -23,7 +23,9 @@ Pour le tp3 il reste à :
 + rendre la div profil totalement responsive (même dans le carre blanc)
 + faire un form sur le profil pour modifier le statut
 + faire une vue chat (HORS de bootstrap) qui sera une div flotante (qu'on peut bouger -> cf sujet)
-- css sur le chat 
++ css sur le chat 
+- reduire/grandir la fenetre
+- quand on charge la page on spawn sur la fin du chat
 - faire la pagination sur le chat
 
 
@@ -31,6 +33,6 @@ Pour le tp3 il reste à :
 - liste d'ami pas moche :p (3 de largeurs dans bootstrap)
 - faire un form pour envoyer des messages à soit-meme (vue mur, on a déjà showMessages [que tu peux rennomer stu veux]) (6 de largeur dans bootstrap) (après ici il faut se démander si le form d'envoie de message n'est pas une vue à part entière [ce qui me parrait logique])
 - cliquer sur un ami affiche son profil complet, par contre le form de message enverra le message sur le mur de cet ami
-- faire une vue message (chaque message sera une sous-vue)
 - faire un css sur les messages (cf sujet)
 - faire la pagination sur les messages (sur la vue mur/showMessages)
+- [pas obligé, commence par ne pas le faire et on verra] faire une vue message (chaque message sera une sous-vue)

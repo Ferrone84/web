@@ -5,8 +5,21 @@ $(document).ready(function(){
 		logout();
 	});
 
-	$("#chat").resizable().draggable();
+	$("#chat").resizable({ alsoResize: "#chats" }).draggable({ cursor: "move", handle: "#chat_toolbar" });
 
+	$("#reduce").on('click', function(event) {
+		$("#notif").html("<span class=\"success\">Vous vous êtes bien déconnecté.</span>");
+		$("#chats").css('display', 'none');
+		$("#chat_form").css('display', 'none');
+		$(this).replaceWith("<span id=\"maximize\" class=\"glyphicon glyphicon-resize-full\" style=\"cursor: pointer\"></span>");
+	});
+
+	$("#maximize").on('click', function(event) {
+		$("#notif").html("<span class=\"success\">Vous vous êtes bien cac.</span>");
+		$("#chats").css('display', 'block');
+		$("#chat_form").css('display', 'block');
+		$(this).replaceWith("<span id=\"reduce\" class=\"glyphicon glyphicon-resize-small\" style=\"cursor: pointer\"></span>");
+	});
 });
 
 function logout() {
@@ -26,3 +39,5 @@ function logout() {
 		}
 	});
 }
+
+/*https://codepen.io/kompiajaib/pen/rOZyWQ*/
