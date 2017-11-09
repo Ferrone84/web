@@ -111,7 +111,7 @@ class mainController
             return context::SUCCESS;
         }
 
-        else return context::ERROR;
+        else return context::NONE;
     }
 
 	/**
