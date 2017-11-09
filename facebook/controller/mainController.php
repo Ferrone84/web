@@ -100,6 +100,20 @@ class mainController
         else return context::ERROR;
 	}
 
+	public static function sendMessage($request, $context){
+        $id = $context->getSessionAttribute('user_id');
+        if (!empty($request['id'])) {
+            $id = strip_tags($request['id']);
+        }
+
+        $context->user = utilisateurTable::getUserById($id);
+        if ($context->user !== NULL) {
+            return context::SUCCESS;
+        }
+
+        else return context::ERROR;
+    }
+
 	/**
 	* Action pour le profil de l'utilisateur
 	*
