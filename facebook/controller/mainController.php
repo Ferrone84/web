@@ -85,19 +85,19 @@ class mainController
 
 	// partie LVM
 	public static function displayFriendList($request, $context){
+        $id = $context->getSessionAttribute('user_id');
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
-			$context->user = utilisateurTable::getUserById($id);
-			if ($context->user !== NULL) {
-				$context->users = utilisateurTable::getUsers();
-				return context::SUCCESS;
-			}
-
-			return context::ERROR;
-
 		}
-		else return context::ERROR;
 
+        $context->user = utilisateurTable::getUserById($id);
+        if ($context->user !== NULL) {
+            $context->avatar =  "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+            $context->users = utilisateurTable::getUsers();
+            return context::SUCCESS;
+        }
+
+        else return context::ERROR;
 	}
 
 	/**
