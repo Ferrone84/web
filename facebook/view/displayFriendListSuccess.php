@@ -12,7 +12,7 @@
                     <!-- pensez a mettre balises img -->
                     <img id="friend_avatar" <?= htmlspecialchars($context->avatar) ?>">
                 <div class="user-id">
-                    <a href="facebook.php?action=profil&amp;id=<?= $user->id ?>">
+                    <a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($user->id) ?>">
                         <span class = "friend_id"><?= htmlspecialchars($user->identifiant) ?></span>
                     </a>
                 </div>
