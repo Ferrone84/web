@@ -236,3 +236,44 @@ li:first-child {
 #chat_form input {
 	width: 70%;
 }
+
+
+/*********** Message ****************/
+.form-send-message{  }
+
+.text-area{
+    resize: none;
+    overflow: hidden;
+    background-color: #eeeeee;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
+    box-shadow: 3px 3px 3px #888888;
+}
+
+.btn-submit{
+    display: flex;
+    justify-content: flex-end;
+    width: 150px;
+    border: 1px solid black;
+    background-color: #ffffff;
+    box-shadow: 3px 3px 3px #888888;
+}
+
+.btn-submit:hover{
+    text-decoration: underline;
+}
+
+.btn-label-submit{
+    color: #000000;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 1.18;
+    text-align: center;
+}
+
+.div-btn-submit{
+    padding: 0 0 0 250px;
+}
