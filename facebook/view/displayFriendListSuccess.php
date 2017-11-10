@@ -6,11 +6,11 @@
             <div class="user-avatar">
                 <?php if ($user->avatar != NULL) : ?>
                     <!-- pensez a mettre balises img -->
-                    <img id="friend_avatar" src="<?= htmlspecialchars($user->avatar) ?>">
+                    <img id="friend_avatar" src="<?= htmlspecialchars($user->avatar) ?>" width="auto">
                 <? else : ?>
                     <!-- mettre une image random no recorded -->
                     <!-- pensez a mettre balises img -->
-                    <img id="friend_avatar" <?= htmlspecialchars($context->avatar) ?>">
+                    <img id="friend_avatar" src="<?= htmlspecialchars($context->avatar) ?>" width="auto">
                 <div class="user-id">
                     <a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($user->id) ?>">
                         <span class = "friend_id"><?= htmlspecialchars($user->identifiant) ?></span>
