@@ -24,7 +24,8 @@ Pour le tp3 il reste à :
 + faire un form sur le profil pour modifier le statut
 + faire une vue chat (HORS de bootstrap) qui sera une div flotante (qu'on peut bouger -> cf sujet)
 + css sur le chat 
-- reduire/grandir la fenetre
++ reduire/grandir la fenetre
+- éviter que resize le chat resize toute la page (voir lien en bas de app.js)
 - quand on charge la page on spawn sur la fin du chat
 - faire la pagination sur le chat
 

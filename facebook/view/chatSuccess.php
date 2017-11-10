@@ -1,6 +1,7 @@
 <div id="chat" class="visible-md visible-lg ui-widget-content">
 	<div id="chat_toolbar" class="ui-widget-content">
 		<span id="reduce" class="glyphicon glyphicon-resize-small"></span>
+		<span id="maximize" class="glyphicon glyphicon-resize-full"></span>
 		<span id="chat_toolbar_texte">Chat</span>
 	</div>
 	<div id="chats">

@@ -1,0 +1,1 @@
+<span>Bienvenue sur l'application ! Utilisez le bandeau pour naviguer sur le site.</span>
