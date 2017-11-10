@@ -31,9 +31,14 @@ Pour le tp3 il reste à :
 
 
 ----- ta partie -----
-- liste d'ami pas moche :p (3 de largeurs dans bootstrap)
-- faire un form pour envoyer des messages à soit-meme (vue mur, on a déjà showMessages [que tu peux rennomer stu veux]) (6 de largeur dans bootstrap) (après ici il faut se démander si le form d'envoie de message n'est pas une vue à part entière [ce qui me parrait logique])
-- cliquer sur un ami affiche son profil complet, par contre le form de message enverra le message sur le mur de cet ami
-- faire un css sur les messages (cf sujet)
+- liste d'ami pas moche :p (3 de largeurs dans bootstrap) (avec css)
++ faire un form pour envoyer des messages à soit-meme (vue mur, on a déjà showMessages 
+*** bouton  submit et input text (1 vue col-sm-6) ***
+[que tu peux rennomer stu veux]) (6 de largeur dans bootstrap) 
++ cliquer sur un ami affiche son profil complet, 
+- par contre le form de message enverra le message sur le mur de cet ami (juste post sur l'id de la page)
+- faire un css sur les messages (cf sujet partie 4)
+
 - faire la pagination sur les messages (sur la vue mur/showMessages)
+*** Mettre en place la pagination, avec css, sans action ***
 - [pas obligé, commence par ne pas le faire et on verra] faire une vue message (chaque message sera une sous-vue)

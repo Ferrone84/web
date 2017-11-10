@@ -17,8 +17,11 @@
 			<div class="container">
 			<?php include($template."headband.php"); ?>
 			<?php include($template_view); ?>
+            <?php //addView("sendMessage"); ?>
+            <?php //addView("displayFriendList"); ?>
 			<?php addView("chat"); ?>
-			</div>
+            <?php // addView("showMessages"); ?>
+            </div>
 		</div>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>

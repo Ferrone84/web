@@ -1,6 +1,3 @@
-<!-- https://getbootstrap.com/docs/3.3/components/#navbar -->
-<!-- https://getbootstrap.com/docs/3.3/examples/navbar-fixed-top/ -->
-
 <div class="row">
 	<header id="header" class="col-xs-12">
 		<div class="row" id="header-infos">
