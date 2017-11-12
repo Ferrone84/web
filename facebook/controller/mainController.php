@@ -18,6 +18,11 @@ class mainController
 		return context::SUCCESS;
 	}
 
+	/**
+	* Action pour connecter l'utilisateur
+	*
+	* @author Duret Nicolas
+	*/
 	public static function login ($request, $context)
 	{
 		//si l'utilisateur est déjà connecté il ne peut pas venir ici
@@ -54,6 +59,11 @@ class mainController
 			return context::ERROR;
 	}
 
+	/**
+	* Action pour déconnecter l'utilisateur
+	*
+	* @author Duret Nicolas
+	*/
 	public static function logout($request,$context){
 		session_destroy();
 		$context->redirect("facebook.php");
@@ -62,57 +72,58 @@ class mainController
 
 	// partie commune
 	public static function showMessage($request, $context) {
+		$id = $context->getSessionAttribute('user_id');
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
-			$context->user = utilisateurTable::getUserById($id);
-			if ($context->user !== NULL) {
-				$context->messages = $context->user->messages; //raccourcit
-				if($context->messages[0] != NULL) { //vérifie si l'utilisateur a des messages
-					$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
-					return context::SUCCESS;
-				}
-				$context->notif = "<span class=\"error\">Cet utilisateur n'a pas de messages.</span>";
-				return context::ERROR;
-			}
-			else {
-				$context->notif = "<span class=\"error\">Veuillez saisir un id valide.</span>";
-				return context::ERROR;
-			}
 		}
-		$context->notif = "<span class=\"error\">Veuillez saisir un id.</span>";
+
+		$context->user = utilisateurTable::getUserById($id);
+		if ($context->user !== NULL) {
+			$context->messages = $context->user->messages; //raccourcit
+			if($context->messages[0] != NULL) { //vérifie si l'utilisateur a des messages
+				$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
+				return context::SUCCESS;
+			}
+			$context->notif = "<span class=\"error\">Cet utilisateur n'a pas de messages.</span>";
+			return context::ERROR;
+		}
+		else {
+			$context->notif = "<span class=\"error\">Veuillez saisir un id valide.</span>";
+			return context::ERROR;
+		}
 		return context::ERROR;
 	}
 
 	// partie LVM
 	public static function displayFriendList($request, $context){
-        $id = $context->getSessionAttribute('user_id');
+		$id = $context->getSessionAttribute('user_id');
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 		}
 
-        $context->user = utilisateurTable::getUserById($id);
-        if ($context->user !== NULL) {
-            $context->avatar =  "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-            $context->users = utilisateurTable::getUsers();
-            return context::SUCCESS;
-        }
+		$context->user = utilisateurTable::getUserById($id);
+		if ($context->user !== NULL) {
+			$context->avatar =  "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+			$context->users = utilisateurTable::getUsers();
+			return context::SUCCESS;
+		}
 
-        else return context::ERROR;
+		else return context::ERROR;
 	}
 
 	public static function sendMessage($request, $context){
-        $id = $context->getSessionAttribute('user_id');
-        if (!empty($request['id'])) {
-            $id = strip_tags($request['id']);
-        }
+		$id = $context->getSessionAttribute('user_id');
+		if (!empty($request['id'])) {
+			$id = strip_tags($request['id']);
+		}
 
-        $context->user = utilisateurTable::getUserById($id);
-        if ($context->user !== NULL) {
-            return context::SUCCESS;
-        }
+		$context->user = utilisateurTable::getUserById($id);
+		if ($context->user !== NULL) {
+			return context::SUCCESS;
+		}
 
-        else return context::NONE;
-    }
+		else return context::NONE;
+	}
 
 	/**
 	* Action pour le profil de l'utilisateur
@@ -145,9 +156,13 @@ class mainController
 		return context::SUCCESS;
 	}
 
+	/**
+	* Action pour le chat de l'utilisateur
+	*
+	* @author Duret Nicolas
+	*/
 	public static function chat($request, $context) {
-		$context->testos = "42";
-		$context->chats = chatTable::getChats();
+		$context->chats = array_reverse(chatTable::getXLastChats(15));
 		$id = $context->getSessionAttribute('user_id');
 		$context->user = utilisateurTable::getUserById($id);
 

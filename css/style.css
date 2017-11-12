@@ -6,13 +6,6 @@ a {
 	color: #0000FF;
 }
 
-li {
-	border-left: 1px solid gray;
-}
-li:first-child {
-	border-left: none;
-}
-
 .center {
 	text-align: center;
 }
@@ -63,6 +56,11 @@ li:first-child {
 #header-menu-ul li{
 	display: table-cell;
 	text-align: center;
+	border-left: 1px solid gray;
+}
+
+#header-menu-ul li:first-child{
+	border-left: none;
 }
 
 #header-menu-ul li a{
@@ -119,8 +117,6 @@ li:first-child {
 	padding: 0 0 0 0;
 }
 
-
-
 /* Partie profil */
 #profil {
 	background-color: white;
@@ -140,6 +136,10 @@ li:first-child {
 	font-weight: bold;
 }
 
+#profil_id{
+	color: gray;
+}
+
 #profil_statut{
 	font-style: italic;
 }
@@ -157,6 +157,7 @@ li:first-child {
 	background-color: white;
 	border: 1px solid black;
 	width: 260px;
+	z-index: 10;
 }
 
 #chat_toolbar {
@@ -177,9 +178,9 @@ li:first-child {
 }
 
 #reduce, #maximize {
-	float: left;
+	float: right;
 	padding-top: 2px;
-	padding-left: 3px;
+	padding-right: 3px;
 	cursor: pointer;
 }
 

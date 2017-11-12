@@ -1,4 +1,4 @@
-<div class="col-sm-3 hidden-xs user-list">
+<div class="user-list">
     <div class="user-label">Amis</div>
     <!-- peut être rajouter le nombre d'amis enregistrés -->
     <div class="user-scrollable">

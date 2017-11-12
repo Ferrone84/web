@@ -17,7 +17,6 @@ class chatTable {
 		return $chats;
 	}
 
-
 	/**
 	* Retourne le dernier chat posté
 	*@author LE VEVE Mathieu
@@ -28,6 +27,22 @@ class chatTable {
 		$ch = dbconnection::getInstance()->getEntityManager() ;
 		$chatRepository = $ch->getRepository('chat');
 		$chat = $chatRepository->findOneBy(array(), array("id" => "DESC")); //sélectionne le premier élément de la table en partant de la fin
+		return $chat;
+	}
+
+	/**
+	* Méthode qui retourne les '$number' derniers chats de la table chat
+	*
+	* @author Duret Nicolas
+	*/
+	public static function getXLastChats($number){
+		$em = dbconnection::getInstance()->getEntityManager();
+		$chatRepository = $em->getRepository('chat');
+		$chat = $chatRepository->findBy(
+			array(), 
+			array("id" => "DESC"),
+			$number
+		);
 		return $chat;
 	}
 }

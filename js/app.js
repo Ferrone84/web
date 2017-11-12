@@ -1,3 +1,8 @@
+/**
+* Fichier contenant tout le js executé dans l'application
+*
+* @author Duret Nicolas
+*/
 $(document).ready(function(){
 	//si on click sur le lien de déconnection
 	$("#logout").on('click', function(event){
@@ -5,9 +10,9 @@ $(document).ready(function(){
 		logout();
 	});
 
-	$("#chat").resizable({ alsoResize: "#chats,#chat_form" }).on('resize', function(e) {
-		e.stopPropagation();
-	});
+	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
+
+	$("#chat").resizable({ alsoResize: "#chats,#chat_form" });
 	$("#chat").draggable({ cursor: "move", handle: "#chat_toolbar" });
 
 	$("#reduce").on('click', function() {
@@ -47,9 +52,3 @@ function logout() {
 		}
 	});
 }
-
-/*
-https://www.google.fr/search?client=ubuntu&hs=4UV&channel=fs&dcr=0&biw=1375&bih=769&ei=YvQBWvXVGYvca9n0iugF&q=jquery+ui+resizable+also+resize+window&oq=jquery+ui+resizable+also+resize+window&gs_l=psy-ab.3..33i22i29i30k1.718508.720857.0.720977.13.13.0.0.0.0.142.1040.9j2.11.0....0...1.1.64.psy-ab..2.11.1034...35i39k1.0.GdavuEmy4yI
-https://stackoverflow.com/questions/7494378/jquery-ui-resizable-fire-window-resize-event
-https://stackoverflow.com/questions/23473105/jquery-ui-resize-also-triggers-a-resize-on-window
-*/

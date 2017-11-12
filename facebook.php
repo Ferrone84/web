@@ -40,7 +40,11 @@ elseif($view!=context::NONE){
 }
 
 
-//cette fonction permet au layout d'ajouter la vue correspondant à l'action demandé
+/**
+* Cette fonction permet au layout d'ajouter la vue, correspondant à l'action demandée
+*
+* @author Duret Nicolas
+*/
 function addView($action) {
 	$context = context::getInstance();
 	include($context->nameApp."/view/".$action.$context->executeAction($action, $_REQUEST).".php");

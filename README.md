@@ -1,6 +1,3 @@
-Ce ReadMe servira pour signaler des informations aux professeurs.
-
-
 /!\ Penser à ne pas oublier d'utiliser bootstrap quand on créer une vue /!\
 
 mega tuto boostrap -> http://bootstrap-doc.prauds.fr/index1.php  + balises/classes à la fin
@@ -25,9 +22,10 @@ Pour le tp3 il reste à :
 + faire une vue chat (HORS de bootstrap) qui sera une div flotante (qu'on peut bouger -> cf sujet)
 + css sur le chat 
 + reduire/grandir la fenetre
-- éviter que resize le chat resize toute la page (voir lien en bas de app.js)
-- quand on charge la page on spawn sur la fin du chat
-- faire la pagination sur le chat
+? éviter que resize le chat resize toute la page (voir lien en bas de app.js)
++ quand on charge la page on spawn sur la fin du chat
+* faire la pagination sur le chat
+- faire un écart entre le bandeau et la vue pour pouvoir afficher les notifications (cf luc)
 
 
 ----- ta partie -----

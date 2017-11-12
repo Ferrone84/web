@@ -1,5 +1,3 @@
-<!-- @AUTHOR: LE VEVE Mathieu -->
-<!-- @DATE: 2017-10-16 -->
 <?php
 
 /** 

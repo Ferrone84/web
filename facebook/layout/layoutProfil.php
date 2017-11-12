@@ -15,13 +15,23 @@
 		<div id="notif" class="center"><?=$context->notif?></div>
 		<div id="view">
 			<div class="container">
-			<?php include($template."headband.php"); ?>
-			<?php include($template_view); ?>
-            <?php //addView("sendMessage"); ?>
-            <?php //addView("displayFriendList"); ?>
-			<?php addView("chat"); ?>
-            <?php // addView("showMessages"); ?>
-            </div>
+				<?php include($template."headband.php"); ?>
+				<div class="row">
+					<div class="col-sm-3">
+						<?php include($template_view); ?>
+						<br>
+						<?php addView("chat"); ?>
+					</div>
+					<div class="col-sm-6">
+						<?php addView("sendMessage"); ?>
+						<br>
+						<?php addView("showMessage"); ?>
+					</div>
+					<div class="col-sm-3 hidden-xs">
+						<?php addView("displayFriendList"); ?>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
