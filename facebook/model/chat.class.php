@@ -22,6 +22,16 @@ class chat{
 	 *  @JoinColumn(name="post", referencedColumnName="id")
 	 */
 	public $post;
+
+	/**
+	* Constructeur de la class chat
+	*
+	* @author Duret Nicolas
+	*/
+	public function __construct($emetteur, $post) {
+		$this->emetteur = $emetteur;
+		$this->post = $post;
+	}
 }
 
 ?>

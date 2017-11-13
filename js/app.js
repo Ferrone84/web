@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
 
-	$("#chat").resizable({ alsoResize: "#chats,#chat_form" });
+	$("#chat").resizable({ alsoResize: "#chats,#chat_form", minWidth: 260, minHeight: 230 });
 	$("#chat").draggable({ cursor: "move", handle: "#chat_toolbar" });
 
 	$("#reduce").on('click', function() {
@@ -43,9 +43,9 @@ function logout() {
 		contentType: false,
 		processData: false,
 		success: function(data)	{
-			$("#notif").html("<span class=\"success\">Vous vous êtes bien déconnecté.</span>");
 			retour_view = $(data).filter('#view').html(); //récuppère tout ce qui est contenu dans la div avec l'id view
 			$("#view").empty().append(retour_view);
+			$("#notif").html("<span class=\"success\">Vous vous êtes bien déconnecté.</span>");
 		},
 		error: function() {
 			$("#notif").html("<span class=\"error\">Erreur lors de la déconnexion.</span>");

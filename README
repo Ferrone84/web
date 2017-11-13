@@ -1,3 +1,14 @@
 /!\ Ce ReadMe servira à signaler des informations aux professeurs /!\
 
 Pour ce TP3 nous nous sommes réparties les tâches de façon à ce que Mathieu fasse la gestion du mur et des amis, et que moi je fasse la gestion du chat et du profil.
+Nous avons donc fait les views qui correspondent aux actions respectivent que nous avions.
+
+Mathieu :
+	Mur -> showMessage
+	amis -> displayFriendList
+
+Moi : 
+	Profil -> profil
+	Chat -> chat
+
+Pour spécifier le code effectué par chacun nous avons mis des tag @author.

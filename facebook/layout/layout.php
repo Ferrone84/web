@@ -10,11 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<!-- Zone de notification -->
-		<div id="notif" class="center"><?=$context->notif?></div>
 		<div id="view">
 			<div class="container">
 			<?php include($template."headband.php"); ?>
+			<div id="notif" class="center"><?=$context->notif?></div>
 			<?php include($template_view); ?>
 			</div>
 		</div>

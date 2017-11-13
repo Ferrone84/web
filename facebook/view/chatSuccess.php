@@ -19,14 +19,13 @@
 					<br>
 					<span class="chat_message_post_user"><?= htmlspecialchars($chat->post->texte) ?></span>
 				</div>
-				<br>
 				<?php endif; ?>
 			<?php endif; ?>
 			<br>
 		<?php endforeach; ?>
 	</div>
 	<div id="chat_form">
-		<form action="facebook.php?action=profil" method="POST">
+		<form action="facebook.php?action=profil<?=$context->id?>" method="POST">
 			<input type="text" name="send_chat" placeholder="Envoyer un chat"/>
 			<button type="submit" class="btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-send"></span> Send

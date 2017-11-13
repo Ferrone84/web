@@ -45,6 +45,21 @@ class chatTable {
 		);
 		return $chat;
 	}
+
+	/**
+	* Permet de créer et d'ajouter un chat dans la base
+	*
+	* @author Duret Nicolas
+	*/
+	public static function addChat($emetteur, $texte, $image = NULL) {
+		$em = dbconnection::getInstance()->getEntityManager();
+		
+		$post = postTable::addPost($texte, $image);
+		$chat = new chat($emetteur, $post);
+
+		$em->persist($chat);
+		$em->flush();
+	}
 }
 
 ?>

@@ -24,6 +24,12 @@ a {
 	background-color: red;
 }
 
+.success,.error {
+	padding: 0.5em;
+	border-radius: 10px;
+	display: inline-block;
+}
+
 /*Header : headband*/
 #header {
 	background-color: #4267b2;
@@ -98,6 +104,8 @@ a {
 }
 
 #notif {
+	height: 40px;
+	display: block;
 }
 
 /* Partie ami */
@@ -165,6 +173,7 @@ a {
 
 #profil_statut{
 	font-style: italic;
+	word-wrap: break-word;
 }
 
 #profil_statut::before {
@@ -237,7 +246,7 @@ a {
 
 .chat_message_user {
 	padding-right: 0.5em;
-	float: right;
+	text-align: right;
 }
 
 .chat_message_id_user {
