@@ -102,20 +102,42 @@ a {
 
 /* Partie ami */
 .user-scrollable {
-	width:249px;
-	height:299px;
-	background-color:Gray;
+	height:600px;
+	background-color:#F8F8FF;
 	overflow-y: scroll;
-	padding: 0 0 0 0;
-}
-.user-avatar{
-	display: inline-block;
-	padding: 0 5px 0 5px;
-	border: 1px solid black;
+	/*padding: 15px 0 0 0;*/
 }
 
-.user-id {
-	padding: 0 0 0 0;
+.user-label{
+	text-align: center;
+	font-size: 16px;
+	font-family: Roboto;
+	font-weight: bold;
+	color: #000000;
+	padding: 15px 0 0 0;
+}
+.user-avatar{
+	/*margin: auto;
+	padding: 0 0 0 5px;*/
+}
+
+
+.user-id:hover a{
+	/*padding: 0 0 0 0;*/
+	color:  #FF0000;
+}
+
+.img-profil-avatar{
+	width: 100%;
+}
+
+.block{
+	display: table;
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+	border-bottom-color: #c8c8c8;
+	padding: 10px 0 10px 0;
+
 }
 
 /* Partie profil */
@@ -246,32 +268,30 @@ a {
 
 
 /*********** Message ****************/
-.form-send-message{  }
+.form-send-message{ 
+    background-color: #eeeeee;
+    padding: 15px 0 0 0;
+ }
 
 .text-area{
+	resize: none;
     overflow: hidden;
     background-color: #eeeeee;
-    -moz-border-radius:7px;
-    -webkit-border-radius:7px;
     border-radius:7px;
     box-shadow: 3px 3px 3px #888888;
 }
 
 .btn-submit{
-    display: flex;
-    justify-content: flex-end;
-    width: 150px;
-    border: 1px solid black;
     background-color: #ffffff;
     box-shadow: 3px 3px 3px #888888;
 }
 
 .btn-submit:hover{
-    text-decoration: underline;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .btn-label-submit{
-    color: #000000;
     font-weight: bold;
     font-style: italic;
     font-family: Roboto;
@@ -281,29 +301,45 @@ a {
 }
 
 .div-btn-submit{
-    padding: 0 0 0 250px;
+    padding: 0 0 0 0px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 0 0 0;
+
 }
 
-.undefined{å
+.undefined{
 	font-style: italic;
 	text-decoration: underline;
 }
 
-.messages{
-	border: 1px solid black;
-	background-color: #F8F8FF;
+.user-message{
+	padding: 15px 0 0 15px;
+}
 
+.messages{
+	background-color: #F8F8FF;
 }
 
 .message{
-	font-family: Verdana;
-	font-weight: bold; 
-	padding: 15px 0 0 0;
+	padding: 15px 0 0 15px;
 }
 
 .emetteur{
-	display: inline-block;
+	display: block;
+	vertical-align: middle;
 }
 
+.post{
+	font-family: Verdana;
+	font-weight: bold; 
+}
+.message-list{
+	padding: 15px 0 15px 0;
+	background-color: #ffffff;
+	border-radius:7px;
+}
 
-
+.date{
+	font-style: italic;
+}

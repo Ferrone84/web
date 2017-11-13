@@ -23,6 +23,7 @@
 						<?php addView("chat"); ?>
 					</div>
 					<div class="col-sm-6">
+						<?php addView("sendMessage");?>
 						<br>
 						<?php addView("showMessage"); ?>
 					</div>

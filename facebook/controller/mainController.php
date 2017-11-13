@@ -94,7 +94,9 @@ class mainController
 		return context::ERROR;
 	}
 
-	// partie LVM
+	/* 
+	* @author LE VEVE Mathieu
+	*/
 	public static function displayFriendList($request, $context){
 		$id = $context->getSessionAttribute('user_id');
 		if (!empty($request['id'])) {
@@ -104,11 +106,11 @@ class mainController
 		$context->user = utilisateurTable::getUserById($id);
 		if ($context->user !== NULL) {
 			$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-			if ($context->user->avatar != NULL){
-				if (substr($context->user->avatar, 0, 5 ) == "https"){
+			//if ($context->user->avatar != NULL){
+				/*if (substr($context->user->avatar, 0, 5 ) == "https"){
 					$context->avatar =  $context->user->avatar;
-				}
-			}
+				}*/
+			//}
 
 			$context->users = utilisateurTable::getUsers();
 			return context::SUCCESS;
