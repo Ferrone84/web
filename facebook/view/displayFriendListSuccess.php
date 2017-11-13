@@ -5,18 +5,15 @@
         <?php foreach($context->users as $user) : ?>
             <div class="user-avatar">
                 <?php if ($user->avatar != NULL) : ?>
-                    <!-- pensez a mettre balises img -->
-                    <img id="profil_avatar" src="<?= htmlspecialchars($user->avatar) ?>" width="20px">
-                <? else : ?>
-                    <!-- mettre une image random no recorded -->
-                    <!-- pensez a mettre balises img -->
+                    <img id="profil_avatar" src="<?= htmlspecialchars($context->user->avatar) ?>" width="20px">
+                <?php else : ?>
                     <img id="profil_avatar" src="<?= htmlspecialchars($context->avatar) ?>" width="20px">
-                <div class="user-id">
+                <?php endif; ?>
+                <p class="user-id">
                     <a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($user->id) ?>">
                         <span class = "friend_id"><?= htmlspecialchars($user->identifiant) ?></span>
                     </a>
-                </div>
-                <?php endif; ?>
+                </p>
             </div>
         <?php endforeach; ?>
     </div>
