@@ -40,6 +40,11 @@ class utilisateurTable {
 		return $users;
 	}
 
+	/**
+	* Renvoie tous les utilisateurs de la base
+	*
+	* @author Duret Nicolas
+	*/
 	public static function updateUser($user) {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 		$em->flush($user);

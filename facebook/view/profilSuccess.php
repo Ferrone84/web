@@ -13,8 +13,8 @@
 	<?php if ($context->current_user == $context->user) : ?>
 	<div class="row center">
 		<form class="col-xs-12" action="facebook.php?action=profil" method="POST">
-			<input class="col-sm-12 col-md-10" type="text" name="modif_statut" placeholder="Changer son statut"/>
-			<button type="submit" class="btn btn-default btn-sm">
+			<input class="col-sm-12 col-md-offset-1 col-md-8" type="text" name="modif_statut" placeholder="Changer statut"/>
+			<button type="submit" class="col-md-2 btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-pencil"></span>
 			</button>
 		</form>

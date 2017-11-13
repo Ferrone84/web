@@ -138,17 +138,20 @@ class mainController
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 			$context->user = utilisateurTable::getUserById($id);
+			if ($context->user == NULL)
+				$context->user = $context->current_user;
 		}
 		else
 			$context->user = $context->current_user;
 
 		//----- variable contenant l'avatar -----
 		$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-		if ($context->user->avatar != NULL)
+		if ($context->user->avatar != NULL && substr($context->user->avatar, 0, 5) === "https")
 			$context->avatar = $context->user->avatar;
 
 		//----- modifier le statut -----
 		if (!empty($request['modif_statut'])) {
+			$context->notif = "<span class=\"success\">Vous avez bien modifié votre statut.</span>";
 			$context->user->statut = strip_tags($request['modif_statut']);
 			utilisateurTable::updateUser($context->user);
 		}
@@ -162,9 +165,19 @@ class mainController
 	* @author Duret Nicolas
 	*/
 	public static function chat($request, $context) {
-		$context->chats = array_reverse(chatTable::getXLastChats(15));
 		$id = $context->getSessionAttribute('user_id');
 		$context->user = utilisateurTable::getUserById($id);
+		if(!empty($request['id'])) {
+			$context->id = '&amp;id='.htmlspecialchars($request['id']);
+		}
+
+		if (!empty($request['send_chat'])) {
+			$emetteur = $context->user;
+			$texte = strip_tags($request['send_chat']);
+			chatTable::addChat($emetteur, $texte);
+		}
+		
+		$context->chats = array_reverse(chatTable::getXLastChats(15));
 
 		return context::SUCCESS;
 	}
