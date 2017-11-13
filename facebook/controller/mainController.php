@@ -70,7 +70,6 @@ class mainController
 		return context::NONE;
 	}
 
-	// partie commune
 	public static function showMessage($request, $context) {
 		$id = $context->getSessionAttribute('user_id');
 		if (!empty($request['id'])) {
@@ -78,16 +77,26 @@ class mainController
 		}
 
 		$context->user = utilisateurTable::getUserById($id);
-		if ($context->user !== NULL) {
-			$context->messages = $context->user->messages; //raccourcit
+        if ($context->user !== NULL) {
+			$context->messages =$context->user->messages; //raccourcit
 			if($context->messages[0] != NULL) { //vérifie si l'utilisateur a des messages
-				$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
+                /*echo ($request['postLike']);
+
+                if(!empty($request['postLike'])){
+                    echo ($request['postLike']);
+                    echo("vrai");
+                    //$context->test = messageTable::addLike($request['postLike']);
+                    //echo (htmlspecialchars($context->test->id));
+                }*/
+				//$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
+				$context->unknown = " unknown.";
 				return context::SUCCESS;
 			}
 			$context->notif = "<span class=\"error\">Cet utilisateur n'a pas de messages.</span>";
 			return context::ERROR;
 		}
-		else {
+
+        else {
 			$context->notif = "<span class=\"error\">Veuillez saisir un id valide.</span>";
 			return context::ERROR;
 		}
@@ -126,6 +135,13 @@ class mainController
 
 		$context->user = utilisateurTable::getUserById($id);
 		if ($context->user !== NULL) {
+			if (!empty($request['send_post'])) {
+				$emetteur = $context->getSessionAttribute('user_id');
+				$emetteur = utilisateurTable::getUserById($emetteur);
+				$destinataire = utilisateurTable::getUserById(strip_tags($request['id']));
+				$texte = strip_tags($request['send_post']);
+				messageTable::addMessage($emetteur, $destinataire, $emetteur, $texte, 0);
+			}
 			return context::SUCCESS;
 		}
 

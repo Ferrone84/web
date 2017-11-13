@@ -285,7 +285,7 @@ a {
 .text-area{
 	resize: none;
     overflow: hidden;
-    background-color: #eeeeee;
+    background-color: #F8F8FF;
     border-radius:7px;
     box-shadow: 3px 3px 3px #888888;
 }
@@ -324,14 +324,21 @@ a {
 
 .user-message{
 	padding: 15px 0 0 15px;
+	border-bottom-color: black;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
 }
 
 .messages{
 	background-color: #F8F8FF;
+
 }
 
 .message{
-	padding: 15px 0 0 15px;
+	padding: 15px 0 10px 15px;
+	border-bottom-color: black;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
 }
 
 .emetteur{
@@ -341,7 +348,7 @@ a {
 
 .post{
 	font-family: Verdana;
-	font-weight: bold; 
+	font-weight: bold;
 }
 .message-list{
 	padding: 15px 0 15px 0;
@@ -351,4 +358,16 @@ a {
 
 .date{
 	font-style: italic;
+}
+
+.like{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.div-like:hover a, .div-donot-like:hover a{
+	color: #FF0000;
+}
+.div-donot-like{
+	display:  block;
 }

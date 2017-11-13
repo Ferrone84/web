@@ -5,9 +5,23 @@ Nous avons donc fait les views qui correspondent aux actions respectivent que no
 
 Mathieu :
 	Mur -> showMessage
-	amis -> displayFriendList
+	    fonctionnalités: afficher la liste des messages en décroissant
+	    ajout des boutons: j'aime et je n'aime (pas encore implémentées)
+	    affichage des informations méta sur les messages
+	    ajout de la fonctionnalité 'Envoyer un message' en fonction de la page utilisateur
+	    Gestion des cas d'erreur
+	    Protection au XSS sur les formulaires
+	    Ajout du responsive avec Boostrap
 
-Moi : 
+	amis -> displayFriendList
+	    affichage de la liste d'amis
+	    Affichage du profil complet lors d'un click sur ami
+	    Ajout d'une scrolling bar
+	    Gestion des cas d'erreurs
+	    Protection au XSS sur les formulaires
+	    Ajout du responsive avec Boostrap
+
+Nicolas :
 	Profil -> profil
 	Chat -> chat
 
