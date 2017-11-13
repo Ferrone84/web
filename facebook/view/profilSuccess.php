@@ -12,9 +12,9 @@
 	</div>
 	<?php if ($context->current_user == $context->user) : ?>
 	<div class="row center">
-		<form class="col-xs-12" action="facebook.php?action=profil" method="POST">
-			<input class="col-sm-12 col-md-offset-1 col-md-8" type="text" name="modif_statut" placeholder="Changer statut"/>
-			<button type="submit" class="col-md-2 btn btn-default btn-sm">
+		<form id="form_statut" class="col-xs-12" action="facebook.php?action=profil" method="POST">
+			<input id="texte_statut" class="col-sm-12 col-md-offset-1 col-md-8" type="text" name="modif_statut" placeholder="Changer statut"/>
+			<button id="statut_submit" type="submit" class="col-md-2 btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-pencil"></span>
 			</button>
 		</form>

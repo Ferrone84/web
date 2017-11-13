@@ -4,12 +4,7 @@
 * @author Duret Nicolas
 */
 $(document).ready(function(){
-	//si on click sur le lien de déconnection
-	$("#logout").on('click', function(event){
-		event.preventDefault(); //évite le comportement par défault du lien
-		logout();
-	});
-
+	//------ Initialisation ------
 	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
 
 	$("#chat").resizable({ alsoResize: "#chats,#chat_form", minWidth: 260, minHeight: 230 });
@@ -33,8 +28,29 @@ $(document).ready(function(){
 		$("#chat").css('height', saveHeight);
 		$("#chat").resizable('enable');
 	});
+
+
+
+	//------ Ajax ------
+
+	//si on click sur le lien de déconnection
+	$("#logout").on('click', function(event){
+		event.preventDefault(); //évite le comportement par défault du lien
+		logout();
+	});
+
+	//si on valide le formulaire d'envoie de statut
+	$("#form_statut").submit(function(event){
+		event.preventDefault(); //évite le comportement par défault du bouton
+		var form = this;
+		var data = new FormData(form);
+		updateStatut(data, form);
+	});
+
 });
 
+
+//------ Toutes les fonctions utilisées dans l'application ------
 function logout() {
 	$.ajax({
 		type: "POST", //type de la requette ajax
@@ -49,6 +65,29 @@ function logout() {
 		},
 		error: function() {
 			$("#notif").html("<span class=\"error\">Erreur lors de la déconnexion.</span>");
+		}
+	});
+}
+
+function updateStatut(data, form) {
+	data.append('statut_submit', '');
+
+	$.ajax({
+		type: "POST", //type de la requette ajax
+		url:'facebookAjax.php?action=profil', //page sur laquelle on effectue la requette
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(data)	{
+			//alert($(data).html());
+			retour_view = $(data).find('#profil_statut').html(); //récuppère tout ce qui est contenu dans la div avec l'id profil_statut
+			$("#profil_statut").empty().append(retour_view);
+			form.reset(); //reset tous les champs du formulaire
+			$("#notif").html("<span class=\"success\">Vous avez bien modifié votre statut.</span>");
+		},
+		error: function() {
+			$("#notif").html("<span class=\"error\">Erreur lors de la modiffication du profil.</span>");
 		}
 	});
 }

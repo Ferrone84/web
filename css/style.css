@@ -263,7 +263,7 @@ a {
 	border-radius: 10px;
 }
 
-#chat_form {
+#div_chat_form {
 	border-top: 1px solid gray;
 	padding-top: 2px;
 	padding-left: 4px;
@@ -271,7 +271,7 @@ a {
 	min-height: 40px;
 }
 
-#chat_form input {
+#div_chat_form input {
 	width: 70%;
 }
 
