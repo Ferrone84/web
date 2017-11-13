@@ -103,11 +103,16 @@ class mainController
 
 		$context->user = utilisateurTable::getUserById($id);
 		if ($context->user !== NULL) {
-			$context->avatar =  "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+			$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+			if ($context->user->avatar != NULL){
+				if (substr($context->user->avatar, 0, 5 ) == "https"){
+					$context->avatar =  $context->user->avatar;
+				}
+			}
+
 			$context->users = utilisateurTable::getUsers();
 			return context::SUCCESS;
 		}
-
 		else return context::ERROR;
 	}
 
