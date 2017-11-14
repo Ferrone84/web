@@ -49,6 +49,7 @@ class utilisateurTable {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 		$em->flush($user);
 	}
+
 }
 //$em->persist($obj); //nouvel objet
 //$em->flush($obj); //update bdd

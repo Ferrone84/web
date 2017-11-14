@@ -339,6 +339,7 @@ a {
 	border-bottom-color: black;
 	border-bottom-width: 1px;
 	border-bottom-style: dotted;
+	word-wrap: break-word;
 }
 
 .emetteur{
@@ -370,4 +371,29 @@ a {
 }
 .div-donot-like{
 	display:  block;
+}
+
+
+/************ Pagination ************************/
+.pagination-component{
+	text-align: center;
+	border-radius: 7px;
+	background-color: #ffffff;
+	font-family: Verdana;
+	font-size: 16px;
+}
+
+.index-pagination:hover {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+
+/*********** Footer ********************************/
+
+.test{
+	text-align:center;
+	font-family: Verdana;
+	font-size: 12px;
+	font-style: italic;
 }

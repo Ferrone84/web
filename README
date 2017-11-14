@@ -12,6 +12,8 @@ Mathieu :
 	    Gestion des cas d'erreur
 	    Protection au XSS sur les formulaires
 	    Ajout du responsive avec Boostrap
+	    Ajout d'une vue Pagination qui gère l'affichage de 5 messages / page.
+	    Ajout d'un footer.
 
 	amis -> displayFriendList
 	    affichage de la liste d'amis

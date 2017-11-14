@@ -25,11 +25,21 @@
 						<?php addView("sendMessage"); ?>
 						<br>
 						<?php addView("showMessage"); ?>
+						<br>
+						<?php addView("pagination");?>
 					</div>
 					<div class="col-sm-3 hidden-xs">
 						<?php addView("displayFriendList"); ?>
 					</div>
 				</div>
+				<br>
+				<footer>
+					<div class="row">
+						<div class=" test">
+							<span class="footer-component">&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
+						</div>
+					</div>
+				</footer>
 			</div>
 		</div>
 		
