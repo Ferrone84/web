@@ -37,6 +37,5 @@ Pour le tp3 il reste à :
 + par contre le form de message enverra le message sur le mur de cet ami (juste post sur l'id de la page)
 + faire un css sur les messages (cf sujet partie 4)
 
-- faire la pagination sur les messages (sur la vue mur/showMessages)
++ faire la pagination sur les messages (sur la vue mur/showMessages)
 *** Mettre en place la pagination, avec css, sans action ***
-- [pas obligé, commence par ne pas le faire et on verra] faire une vue message (chaque message sera une sous-vue)

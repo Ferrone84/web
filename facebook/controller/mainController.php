@@ -20,7 +20,6 @@ class mainController
 
 	/**
 	* Action pour connecter l'utilisateur
-	*
 	* @author Duret Nicolas
 	*/
 	public static function login ($request, $context)
@@ -61,7 +60,6 @@ class mainController
 
 	/**
 	* Action pour déconnecter l'utilisateur
-	*
 	* @author Duret Nicolas
 	*/
 	public static function logout($request,$context){
@@ -70,16 +68,38 @@ class mainController
 		return context::NONE;
 	}
 
+
+	/**
+	* Action pour afficher les messages en fonction de la pagination et du profil utilisateur
+	* @author LE VEVE Mathieu
+	*/
 	public static function showMessage($request, $context) {
 		$id = $context->getSessionAttribute('user_id');
+		$context->current_user = utilisateurTable::getUserById($id);
+
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 		}
 
 		$context->user = utilisateurTable::getUserById($id);
         if ($context->user !== NULL) {
-			$context->messages =$context->user->messages; //raccourcit
+        	$page = 1;
+        	if (!empty($request['page'])) {
+        		$page = strip_tags($request['page']);
+        	}
+
+			$context->messages = $context->user->messages; //raccourcit
 			if($context->messages[0] != NULL) { //vérifie si l'utilisateur a des messages
+				$messages = array();
+				for ($i = ($page*5)-5; $i < $page*5; $i++){
+					if ($context->messages[$i] === NULL){
+						break;
+					}
+					$messages[$i] = $context->messages[$i];
+				}
+
+				$context->test=$messages;
+
                 /*echo ($request['postLike']);
 
                 if(!empty($request['postLike'])){
@@ -97,17 +117,21 @@ class mainController
 		}
 
         else {
-			$context->notif = "<span class=\"error\">Veuillez saisir un id valide.</span>";
-			return context::ERROR;
+        	$context->user = $context->current_user;
+        	$context->messages =$context->user->messages; //raccourcit
+			return context::SUCCESS;
 		}
 		return context::ERROR;
 	}
 
 	/* 
+	* Action pour afficher la liste des amis enregistrés.
 	* @author LE VEVE Mathieu
 	*/
 	public static function displayFriendList($request, $context){
 		$id = $context->getSessionAttribute('user_id');
+		$context->current_user = utilisateurTable::getUserById($id);
+
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 		}
@@ -124,28 +148,80 @@ class mainController
 			$context->users = utilisateurTable::getUsers();
 			return context::SUCCESS;
 		}
-		else return context::ERROR;
+
+
+		else {
+			$context->user = $context->current_user;
+			$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+			$context->users = utilisateurTable::getUsers();
+			return context::SUCCESS;
+		}
 	}
 
+	/* 
+	* Action qui gère la pagination.
+	* @author LE VEVE Mathieu
+	*/
+	public static function pagination($request, $context){
+
+		if (!empty($request['id'])) {
+			$id = strip_tags($request['id']);
+		}
+
+		 if ($context->user !== NULL){
+			$context->count = count($context->messages);
+			$pagination = array();
+
+			for ($i = 1; $i <= (int)$context->count/5 ; $i++){
+				$pagination[] = $i;
+			}
+
+			if ($context->count%5 !== 0){
+				$last_index = count($pagination)+1 ;
+				$pagination[$last_index] = $last_index;
+			}
+
+			$context->pagination=$pagination;
+			return context::SUCCESS;
+		}
+	}
+
+	/* 
+	* Action qui envoie un message d'un formulaire a la liste de messages.
+	* @author LE VEVE Mathieu
+	*/
 	public static function sendMessage($request, $context){
 		$id = $context->getSessionAttribute('user_id');
+		$context->current_user = utilisateurTable::getUserById($id);
+
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 		}
 
 		$context->user = utilisateurTable::getUserById($id);
+
 		if ($context->user !== NULL) {
 			if (!empty($request['send_post'])) {
+				$texte = strip_tags($request['send_post']);	
+
+				// l'image sera ajoutée dans la base plus tard
+				if(!empty($request['file'])) {
+					$image = strip_tags($request['file']);
+				}
+
 				$emetteur = $context->getSessionAttribute('user_id');
 				$emetteur = utilisateurTable::getUserById($emetteur);
 				$destinataire = utilisateurTable::getUserById(strip_tags($request['id']));
-				$texte = strip_tags($request['send_post']);
 				messageTable::addMessage($emetteur, $destinataire, $emetteur, $texte, 0);
 			}
-			return context::SUCCESS;
+				return context::SUCCESS;
+
 		}
 
-		else return context::NONE;
+		else {
+			$context->user = $context->current_user;
+			return context::SUCCESS;
+		}
 	}
 
 	/**

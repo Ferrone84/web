@@ -8,7 +8,7 @@
 		</p>
 	</div>
 	<div class="messages">
-		<?php foreach($context->messages as $message) : ?>
+		<?php foreach($context->test as $message) : ?>
 			<div class="message">
 				<?php if (htmlspecialchars($message->post != NULL)) : ?>
 					<?php echo "<span class=\"post\">".htmlspecialchars($message->post->texte)."</span>" ;?>
@@ -18,6 +18,12 @@
 						<?php echo (htmlspecialchars($message->aime))." like." ;?>
 					<?php else : ?>
 						<?php echo (0)." like.";?>
+					<?php endif; ?>
+				</div>
+				<div class="image">
+					<?php if (htmlspecialchars($message->post->image != NULL)) : ?>
+						<?php echo (htmlspecialchars($message->post->image)) ?>
+			        
 					<?php endif; ?>
 				</div>
 				<div class="emetteur">

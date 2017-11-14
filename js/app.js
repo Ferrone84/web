@@ -10,6 +10,7 @@ $(document).ready(function(){
 	$("#chat").resizable({ alsoResize: "#chats,#chat_form", minWidth: 260, minHeight: 230, handles: 'n, e, s, w, nw, ne, sw, se' });
 	$("#chat").draggable({ cursor: "move", handle: "#chat_toolbar" });
 
+	//------ Gère le chat ------
 	$("#reduce").on('click', function() {
 		saveHeight = $("#chat").height()+2;
 		$("#chats").css('display', 'none');

@@ -12,9 +12,17 @@
 	<body>
 		<div id="view">
 			<div class="container">
-			<?php include($template."headband.php"); ?>
-			<div id="notif" class="center"><?=$context->notif?></div>
-			<?php include($template_view); ?>
+				<?php include($template."headband.php"); ?>
+				<div id="notif" class="center"><?=$context->notif?></div>
+				<?php include($template_view); ?>
+				<br>
+				<footer>
+					<div class="row">
+						<div class=" test">
+							<span class="footer-component">&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
+						</div>
+					</div>
+				</footer>
 			</div>
 		</div>
 		
