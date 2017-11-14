@@ -228,6 +228,7 @@ a {
 
 .chat_message {
 	padding-left: 0.5em;
+	word-wrap: break-word;
 }
 
 .chat_message_id {
@@ -247,15 +248,17 @@ a {
 .chat_message_user {
 	padding-right: 0.5em;
 	text-align: right;
+	word-wrap: break-word;
 }
 
 .chat_message_id_user {
-	padding-left: 0.5em;
+	padding-right: 0.5em;
 	color: gray;
 }
 
 .chat_message_post_user {
 	background-color: #0084ff;
+	color: white;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	padding-top: 2px;

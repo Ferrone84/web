@@ -25,7 +25,7 @@ Pour le tp3 il reste à :
 ? éviter que resize le chat resize toute la page (voir lien en bas de app.js)
 + quand on charge la page on spawn sur la fin du chat
 * faire la pagination sur le chat
-- faire un écart entre le bandeau et la vue pour pouvoir afficher les notifications (cf luc)
++ faire un écart entre le bandeau et la vue pour pouvoir afficher les notifications
 
 
 ----- ta partie -----

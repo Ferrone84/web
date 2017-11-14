@@ -26,8 +26,8 @@
 	</div>
 	<div id="div_chat_form">
 		<form id="chat_form" action="facebook.php?action=profil<?=$context->id?>" method="POST">
-			<input type="text" name="send_chat" placeholder="Envoyer un chat"/>
-			<button type="submit" class="btn btn-default btn-sm">
+			<input id="texte_chat" type="text" name="send_chat" placeholder="Envoyer un chat"/>
+			<button id="chat_submit" type="submit" class="btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-send"></span> Send
 			</button>
 		</form>
