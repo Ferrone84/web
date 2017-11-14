@@ -17,7 +17,8 @@ class utilisateur{
 	/** @Column(type="string", length=45) */ 
 	public $pass;
 
-	/** @Column(type="string", length=45) */ 
+	/** @Column(type="string", length=45) *
+     */
 	public $nom;
 
 	/** @Column(type="string", length=45) */ 
@@ -34,6 +35,7 @@ class utilisateur{
 	
 	/**
 	 * @OneToMany(targetEntity="message", mappedBy="destinataire")
+	 * @OrderBy({"id" = "DESC"})
 	 */
 	public $messages;
 }
