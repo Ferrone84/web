@@ -22,7 +22,16 @@ class messageTable {
 		$em = dbconnection::getInstance()->getEntityManager();
         $messageRepository = $em->getRepository('message');
         $message = $messageRepository->findOneById($id);
-        return $message;
+        $message->aime += 1;
+        $em->flush($message);
+	}
+
+	public static function addDislike($id){
+		$em = dbconnection::getInstance()->getEntityManager();
+        $messageRepository = $em->getRepository('message');
+        $message = $messageRepository->findOneById($id);
+        $message->aime -= 1;
+        $em->flush($message);
 	}
 }
 ?>

@@ -1,70 +1,99 @@
 <div class = "message-list">
-	<div class="user-message">
-		<p>
-			<?php echo htmlspecialchars($context->user->prenom)." ";
-            echo htmlspecialchars($context->user->nom)." ";
-			echo htmlspecialchars($context->user->identifiant)." "; 
-			echo "<span class=\"date\">".htmlspecialchars($context->user->date_de_naissance->format('d-m-y'))."</span>";?>
-		</p>
-	</div>
 	<div class="messages">
-		<?php foreach($context->test as $message) : ?>
+		<?php foreach($context->messageList as $message) : ?>
 			<div class="message">
-				<?php if (htmlspecialchars($message->post != NULL)) : ?>
-					<?php echo "<span class=\"post\">".htmlspecialchars($message->post->texte)."</span>" ;?>
-				<?php endif; ?>
-				<div class="like">
-					<?php if (htmlspecialchars($message->aime != NULL)) : ?>
-						<?php echo (htmlspecialchars($message->aime))." like." ;?>
+				<div class="header-emetteur">
+					<?php if ($message->emetteur != NULL) : ?>
+						<?php if ($message->emetteur->id != NULL) : ?>
+							<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->emetteur->id)?>">
+								<?php if ($message->emetteur->avatar != NULL) : ?>
+									<img class="img-circle area-profile-avatar"  src="<?= htmlspecialchars($message->emetteur->avatar) ?>"/>
+								<?php else : ?>
+									<img class="img-circle area-profile-avatar"  src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png"/>
+								<?php endif; ?>
+							</a>
+						<?php endif; ?>
 					<?php else : ?>
-						<?php echo (0)." like.";?>
+						<img class="img-circle area-profile-avatar"  src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png"/>
 					<?php endif; ?>
+
+					<div class="area-emetteur">
+						by :
+						<span class = "emetteur-alias">
+						<?php if ($message->emetteur != NULL) : ?>
+							<?php if ($message->emetteur->id != NULL) : ?>
+								<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->emetteur->id) ?>">
+									<?php echo ($message->emetteur->identifiant != NULL) ?  ' '.(htmlspecialchars($message->emetteur->identifiant)).' ' : ' unknown </span>' ?>
+								</a>
+							<?php endif; ?>
+						<?php else : ?>
+							unknown
+						<?php endif; ?>
+						</span>
+					</div>
+
+					<div class="area-date">
+						<span class = "emetteur-time">
+						<?php if ($message->post != NULL) : ?>
+							<?php if ($message->post->date != NULL) : ?>
+								<?php echo (htmlspecialchars($message->post->date->format('Y-m-d H:i'))); ?>
+							<?php endif; ?>
+						<?php else : ?>
+							unknown
+						<?php endif; ?>
+						</span>
+					</div>
 				</div>
+
+				
+				<?php if ($message->post != NULL) : ?>
+					<?php if ($message->post->texte != NULL) : ?>
+						<div class="area-post">
+							<?php echo "<p><span class=\"post\">".htmlspecialchars($message->post->texte)."</span></p>" ;?>
+						</div>
+					<?php endif; ?>
+				<?php endif; ?>
+
 				<div class="image">
-					<?php if (htmlspecialchars($message->post->image != NULL)) : ?>
-						<?php echo (htmlspecialchars($message->post->image)) ?>
-			        
+					<?php if ($message->post != NULL) : ?>
+						<?php if ($message->post->image != NULL)  : ?>
+							<?php echo (htmlspecialchars($message->post->image)) ?>
+						<?php endif; ?>
 					<?php endif; ?>
 				</div>
-				<div class="emetteur">
-					emetteur :
-					<?php if (htmlspecialchars($message->emetteur->identifiant != NULL)) : ?>
-						<?php echo (htmlspecialchars($message->emetteur->identifiant)) ?>
-			        <?php else : ?>
-						<?php echo "<span class=\"undefined\">".htmlspecialchars($context->unknown)."</span>";?>
-					<?php endif; ?>
-				</div>
-				<div class="destinataire">
-					destinataire :  
-					<?php if (htmlspecialchars($message->destinataire->identifiant != NULL)) : ?>
-						<?php echo (htmlspecialchars($message->destinataire->identifiant)) ?>
-			        <?php else : ?>
-						<?php echo "<span class=\"undefined\">".htmlspecialchars($context->unknown)."</span>";?>
-					<?php endif; ?>
-				</div>
+
 				<div class="parent">
-					origine: 
-					<?php if (htmlspecialchars($message->parent != NULL)) : ?>
-						<?php echo (htmlspecialchars($message->parent->identifiant)) ?>
-		            <?php else : ?>
-						<?php echo "<span class=\"undefined\">".htmlspecialchars($context->unknown)."</span>";?>
-					<?php endif; ?>
+					<span class = "emetteur-alias">
+						<?php if ($message->parent != NULL) : ?>
+							<?php if ($message->parent->id != NULL) : ?>
+								<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->parent->id) ?>">
+									<?php if ($message->parent->identifiant != NULL) : ?>
+										<?php echo" auteur: ".(htmlspecialchars($message->parent->identifiant));?>
+									<?php endif; ?>
+								</a>
+							<?php endif; ?>
+						<?php endif; ?>
+					</span>
 				</div>
+
                 <div class="div-like">
-                    <!--<form action="facebook.php?action=showMessage&amp;id=<?= htmlspecialchars($context->user->id);?>"
-                          method="post">-->
-                            <a href="#">J'aime</a>
-                            <!--<input type="hidden" id="postId" name="postLike" value="<?php //echo ($message->post->id);?>"/>
-                    </form>-->
-                    <?php //echo ($message->post->id);?>
-                </div>
-                <div class="div-donot-like">
-                    <a href="#">Je n'aime pas</a>
+                    <form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
+                        <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
+                        <input type="submit" value="J'aime" class="btn-aime btn btn-link"/>
+                    </form>
+                    <div class="like">
+						<?php if ($message->aime != NULL) : ?>
+	                        <?php if ($message->aime >= 0) : ?>
+	                            <?php echo (htmlspecialchars($message->aime))." likes." ;?>
+	                        <?php elseif ($message->aime <= 0) : ?>
+	                            <?php echo (htmlspecialchars(substr($message->aime,1))." dislikes.") ;?>
+	                        <?php endif; ?>
+	                    <?php else : ?>
+							0 like.
+						<?php endif; ?>
+					</div>
                 </div>
 			</div>
-			
-					
-
 		<?php endforeach; ?>
 	</div>
 </div>

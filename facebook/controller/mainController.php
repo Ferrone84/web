@@ -70,16 +70,21 @@ class mainController
 
 
 	/**
-	* Action pour afficher les messages en fonction de la pagination et du profil utilisateur
+	* @brief Action pour afficher les messages en fonction de la pagination et du profil utilisateur
+	* Gère la pagination
+	* Gère l'affichage like / dislike (en fonction des malins qui tapent directement dans la db en rajoutant des valeurs négatives)
 	* @author LE VEVE Mathieu
 	*/
 	public static function showMessage($request, $context) {
 		$id = $context->getSessionAttribute('user_id');
 		$context->current_user = utilisateurTable::getUserById($id);
-
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 		}
+
+        if(!empty($request['page'])) {
+            $context->page = '&page='.htmlspecialchars($request['page']);
+        }
 
 		$context->user = utilisateurTable::getUserById($id);
         if ($context->user !== NULL) {
@@ -88,8 +93,13 @@ class mainController
         		$page = strip_tags($request['page']);
         	}
 
-			$context->messages = $context->user->messages; //raccourcit
-			if($context->messages[0] != NULL) { //vérifie si l'utilisateur a des messages
+            if(!empty($request['mess_id'])){
+                    messageTable::addLike($request['mess_id']);
+            }
+
+			$context->messages = $context->user->messages; 
+			if($context->messages[0] != NULL) { 
+			//vérifie si l'utilisateur a des messages
 				$messages = array();
 				for ($i = ($page*5)-5; $i < $page*5; $i++){
 					if ($context->messages[$i] === NULL){
@@ -98,18 +108,7 @@ class mainController
 					$messages[$i] = $context->messages[$i];
 				}
 
-				$context->test=$messages;
-
-                /*echo ($request['postLike']);
-
-                if(!empty($request['postLike'])){
-                    echo ($request['postLike']);
-                    echo("vrai");
-                    //$context->test = messageTable::addLike($request['postLike']);
-                    //echo (htmlspecialchars($context->test->id));
-                }*/
-				//$context->notif = "<span class=\"success\">Voici les messages dans lesquels l'utilisateur ".$context->user->identifiant." est cité.</span>";
-				$context->unknown = " unknown.";
+				$context->messageList=$messages;
 				return context::SUCCESS;
 			}
 			$context->notif = "<span class=\"error\">Cet utilisateur n'a pas de messages.</span>";
@@ -139,16 +138,9 @@ class mainController
 		$context->user = utilisateurTable::getUserById($id);
 		if ($context->user !== NULL) {
 			$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-			//if ($context->user->avatar != NULL){
-				/*if (substr($context->user->avatar, 0, 5 ) == "https"){
-					$context->avatar =  $context->user->avatar;
-				}*/
-			//}
-
 			$context->users = utilisateurTable::getUsers();
 			return context::SUCCESS;
 		}
-
 
 		else {
 			$context->user = $context->current_user;
