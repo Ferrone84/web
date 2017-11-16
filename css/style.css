@@ -157,6 +157,7 @@ a {
 
 #profil_avatar {
 	margin-top: 2px;
+	object-fit: cover;
 }
 
 #profil_infos {
@@ -190,6 +191,7 @@ a {
 	border: 1px solid black;
 	width: 260px;
 	z-index: 10;
+	position: fixed;
 }
 
 #chat_toolbar {
@@ -243,6 +245,7 @@ a {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 10px;
+	display: inline-block;
 }
 
 .chat_message_user {
@@ -264,6 +267,7 @@ a {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 10px;
+	display: inline-block;
 }
 
 #div_chat_form {
@@ -394,9 +398,10 @@ a {
 
 /*********** Footer ********************************/
 
-.test{
-	text-align:center;
+.footer{
+	text-align: center;
 	font-family: Verdana;
 	font-size: 12px;
 	font-style: italic;
+	padding-bottom: 1rem;
 }

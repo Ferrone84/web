@@ -18,8 +18,8 @@
 				<br>
 				<footer>
 					<div class="row">
-						<div class=" test">
-							<span class="footer-component">&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
+						<div class="footer col-xs-12 navbar-fixed-bottom">
+							<span>&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
 						</div>
 					</div>
 				</footer>

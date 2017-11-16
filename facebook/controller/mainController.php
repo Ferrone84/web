@@ -15,6 +15,8 @@ class mainController
 
 	public static function index($request,$context)
 	{
+		$context->setLayout("layout");
+
 		return context::SUCCESS;
 	}
 

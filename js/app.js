@@ -4,38 +4,21 @@
 * @author Duret Nicolas
 */
 $(document).ready(function(){
-	//------ Initialisation ------
-	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
+	//------ Partie Initialisation ------
 
-	$("#chat").resizable({ alsoResize: "#chats,#chat_form", minWidth: 260, minHeight: 230, handles: 'n, e, s, w, nw, ne, sw, se' });
-	$("#chat").draggable({ cursor: "move", handle: "#chat_toolbar" });
-
-	//------ Gère le chat ------
-	$("#reduce").on('click', function() {
-		saveHeight = $("#chat").height()+2;
-		$("#chats").css('display', 'none');
-		$("#chat_form").css('display', 'none');
-		$(this).hide();
-		$("#maximize").show();
-		$("#chat").css('height', '24');
-		$("#chat").resizable('disable');
-	});
-
-	$("#maximize").on('click', function() {
-		$("#chats").css('display', 'block');
-		$("#chat_form").css('display', 'block');
-		$(this).hide();
-		$("#reduce").show();
-		$("#chat").css('height', saveHeight);
-		$("#chat").resizable('enable');
-	});
+	//si le chat est sur la vue courrante
+	if ($("#chat").length) {
+		initChat();
+	}
 
 	//si on clique sur la zone de notification ça l'a vide
 	$("#notif").on('click', function() {
 		$("#notif").empty();
 	});
 
-	//------ Ajax ------
+
+
+	//------ Partie Ajax ------
 
 	//si on click sur le lien de déconnection
 	$("#logout").on('click', function(event){
@@ -71,6 +54,33 @@ $(document).ready(function(){
 
 
 //------ Toutes les fonctions utilisées dans l'application ------
+function initChat() {
+	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
+
+	$("#chat").resizable({ alsoResize: "#chats,#chat_form", minWidth: 260, minHeight: 230, handles: 'n, e, s, w, nw, ne, sw, se' });
+	$("#chat").draggable({ cursor: "move", handle: "#chat_toolbar" });
+
+	//------ Gère le chat ------
+	$("#reduce").on('click', function() {
+		saveHeight = $("#chat").height()+2;
+		$("#chats").css('display', 'none');
+		$("#chat_form").css('display', 'none');
+		$(this).hide();
+		$("#maximize").show();
+		$("#chat").css('height', '24');
+		$("#chat").resizable('disable');
+	});
+
+	$("#maximize").on('click', function() {
+		$("#chats").css('display', 'block');
+		$("#chat_form").css('display', 'block');
+		$(this).hide();
+		$("#reduce").show();
+		$("#chat").css('height', saveHeight);
+		$("#chat").resizable('enable');
+	});
+}
+
 function logout() {
 	$.ajax({
 		type: "POST", //type de la requette ajax
