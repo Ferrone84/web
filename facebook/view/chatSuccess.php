@@ -11,17 +11,17 @@
 				<div class="chat_message">
 					<span class="chat_message_id">@<?= htmlspecialchars($chat->emetteur->identifiant) ?></span>
 					<br>
-					<span class="chat_message_post"><?= htmlspecialchars($chat->post->texte) ?></span>
+					<div class="chat_message_post"><?= htmlspecialchars($chat->post->texte) ?></div>
 				</div>
 				<?php else : ?>
 				<div class="chat_message_user">
 					<span class="chat_message_id_user"> Moi </span>
 					<br>
-					<span class="chat_message_post_user"><?= htmlspecialchars($chat->post->texte) ?></span>
+					<div class="chat_message_post_user"><?= htmlspecialchars($chat->post->texte) ?></div>
 				</div>
 				<?php endif; ?>
+				<br>
 			<?php endif; ?>
-			<br>
 		<?php endforeach; ?>
 	</div>
 	<div id="div_chat_form">

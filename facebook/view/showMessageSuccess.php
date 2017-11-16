@@ -62,37 +62,23 @@
 					<?php endif; ?>
 				</div>
 
-				<div class="parent">
-					<span class = "emetteur-alias">
-						<?php if ($message->parent != NULL) : ?>
-							<?php if ($message->parent->id != NULL) : ?>
-								<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->parent->id) ?>">
-									<?php if ($message->parent->identifiant != NULL) : ?>
-										<?php echo" auteur: ".(htmlspecialchars($message->parent->identifiant));?>
-									<?php endif; ?>
-								</a>
-							<?php endif; ?>
-						<?php endif; ?>
-					</span>
-				</div>
-
                 <div class="div-like">
                     <form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
                         <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
                         <input type="submit" value="J'aime" class="btn-aime btn btn-link"/>
                     </form>
-                    <div class="like">
-						<?php if ($message->aime != NULL) : ?>
-	                        <?php if ($message->aime >= 0) : ?>
-	                            <?php echo (htmlspecialchars($message->aime))." likes." ;?>
-	                        <?php elseif ($message->aime <= 0) : ?>
-	                            <?php echo (htmlspecialchars(substr($message->aime,1))." dislikes.") ;?>
-	                        <?php endif; ?>
-	                    <?php else : ?>
-							0 like.
-						<?php endif; ?>
-					</div>
                 </div>
+                <div class="like">
+					<?php if ($message->aime != NULL) : ?>
+	                    <?php if ($message->aime >= 0) : ?>
+	                        <?php echo (htmlspecialchars($message->aime))." likes." ;?>
+	                    <?php elseif ($message->aime <= 0) : ?>
+	                        <?php echo (htmlspecialchars(substr($message->aime,1))." dislikes.") ;?>
+	                    <?php endif; ?>
+	                	<?php else : ?>
+							0 like.
+					<?php endif; ?>
+				</div>
 			</div>
 		<?php endforeach; ?>
 	</div>
