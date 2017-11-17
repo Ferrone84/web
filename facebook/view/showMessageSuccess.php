@@ -21,23 +21,21 @@
 						by :
 						<span class = "emetteur-alias">
 						<?php if ($message->emetteur != NULL) : ?>
-							<?php if ($message->emetteur->id != NULL) : ?>
-								<?php if ($message->parent != NULL ) : ?>
-									<?php if($message->parent->identifiant != NULL ) : ?>
-										<?php if ($message->emetteur->identifiant != NULL) :?>
-											<?php echo ($message->parent->identifiant == $message->emetteur->identifiant) ?
-													'<a href="facebook.php?action=profil&amp;id='.htmlspecialchars($message->emetteur->id).'">'.htmlspecialchars($message->emetteur->identifiant).'</a></span>' :
+							<?php if ($message->parent != NULL ) : ?>
+								<?php if($message->parent->identifiant != NULL ) : ?>
+									<?php if ($message->emetteur->identifiant != NULL) :?>
+										<?php echo ($message->parent->identifiant == $message->emetteur->identifiant) ?
+											'<a href="facebook.php?action=profil&amp;id='.htmlspecialchars($message->emetteur->id).'">'.htmlspecialchars($message->emetteur->identifiant).'</a></span>' :
 
-													'<a href="facebook.php?action=profil&amp;id='.htmlspecialchars($message->parent->id).'">'.htmlspecialchars($message->parent->identifiant).'</a> partagé par: <a href="facebook.php?action=profil&amp;id='.htmlspecialchars($message->emetteur->id).'">'.htmlspecialchars($message->emetteur->identifiant).'</a></span>';?>
-										<?php endif; ?>
+												'<a href="facebook.php?action=profil&amp;id='.htmlspecialchars($message->parent->id).'">'.htmlspecialchars($message->parent->identifiant).'</a> partagé par: <a href="facebook.php?action=profil&amp;id='.htmlspecialchars($message->emetteur->id).'">'.htmlspecialchars($message->emetteur->identifiant).'</a></span>';?>
 									<?php endif; ?>
-								<?php else : ?>
-									<?php echo ($message->emetteur->identifiant != NULL) ?  
-										'<a href="facebook.php?action=profil&amp;id="'.htmlspecialchars($message->emetteur->id)."> ".
-										htmlspecialchars($message->emetteur->identifiant).'</a></span>' : 
-										' unknown </span>' 
-									?>
 								<?php endif; ?>
+							<?php else : ?>
+								<?php echo ($message->emetteur->identifiant != NULL) ?  
+									'<a href="facebook.php?action=profil&amp;id="'.htmlspecialchars($message->emetteur->id)."> ".
+									htmlspecialchars($message->emetteur->identifiant).'</a></span>' : 
+									' unknown </span>' 
+								?>
 							<?php endif; ?>
 						<?php else : ?>
 							unknown</span>
@@ -77,14 +75,21 @@
                 <div class="div-like">
                     <form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
                         <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
-                        <input type="submit" value="J'aime" class="btn-aime btn btn-link"/>
+                        <button type="submit" class="btn-aime btn btn-link">
+                        	<span class="glyphicon glyphicon-thumbs-up"></span>
+                        	J'aime
+                        </button>
                     </form>
                 </div>
 
                 <div class="div-share">
                     	<form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->current_user->id)?>&amp;page=1" method="POST">
                         <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id_share"/>
-                        <input type="submit" value="Partager"/>
+                        <button type="submit">
+                        	<span class="glyphicon glyphicon-share"></span>
+                        	Partager
+                        </button>
+                       <!-- <input type="submit" value="Partager"/>-->
                     </form>
                 </div>
 

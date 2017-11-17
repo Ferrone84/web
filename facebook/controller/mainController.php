@@ -216,7 +216,10 @@ class mainController
 				if($context->message->parent!= $emetteur) {
 					if($context->message->post !== NULL) {
 						//echo($emetteur->id.', '.$parent.', '.$context->message->post->id.', '.'0');
-						messageTable::addSharedMessage($emetteur, $context->message->parent, $context->message->post, 0);
+						messageTable::addSharedMessage($emetteur, 
+							($context->message->parent != null ? $context->message->parent : $context->message->emetteur),
+							$context->message->post,
+							0);
 					}
 				}
             }
