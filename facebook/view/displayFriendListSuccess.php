@@ -14,7 +14,10 @@
                     <?php endif; ?>
             </div>
             <div class="col-sm-12 col-md-8 user-id">
-                    <span class = "friend_id"><?= htmlspecialchars($user->identifiant) ?></span>
+                <?php echo ($user->identifiant != NULL) ? 
+                    '<span class = "friend_id">'.htmlspecialchars($user->identifiant).'</span>' : 
+                    '<span class = "friend_id">Unknown</span>';
+                ?>
                 </a>
             </div>
             </p>

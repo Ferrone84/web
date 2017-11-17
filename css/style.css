@@ -323,6 +323,10 @@ a {
 	display: inline-block;
 }
 
+.div-share{
+	display: inline-block;
+}
+
 .emetteur-alias{
 	font-style: italic;
 }

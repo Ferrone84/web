@@ -208,8 +208,20 @@ class mainController
 				$destinataire = utilisateurTable::getUserById(strip_tags($request['id']));
 				messageTable::addMessage($emetteur, $destinataire, $emetteur, $texte, 0);
 			}
-				return context::SUCCESS;
 
+			if(!empty($request['mess_id_share'])){
+				$context->message = messageTable::getMessageById(strip_tags($request['mess_id_share']));
+				$emetteur = $context->getSessionAttribute('user_id');
+				$emetteur = utilisateurTable::getUserById($emetteur);
+				if($context->message->parent!= $emetteur) {
+					if($context->message->post !== NULL) {
+						//echo($emetteur->id.', '.$parent.', '.$context->message->post->id.', '.'0');
+						messageTable::addSharedMessage($emetteur, $context->message->parent, $context->message->post, 0);
+					}
+				}
+            }
+
+            return context::SUCCESS;
 		}
 
 		else {

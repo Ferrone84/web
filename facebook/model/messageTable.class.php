@@ -4,7 +4,7 @@ require_once "message.class.php";
 
 class messageTable {
 	/**
-	* Permet de créer et d'ajouter un message dans la base
+	* @brief Permet de créer et d'ajouter un message dans la base
 	*
 	* @author LE VEVE Mathieu
 	*/
@@ -18,6 +18,21 @@ class messageTable {
 		$em->flush();
 	}
 
+	public static function addSharedMessage($emetteur, $parent, $post, $like) {
+		$em = dbconnection::getInstance()->getEntityManager();
+
+		//$post = postTable::getPostById($post_id);
+		$message = new message($emetteur, $emetteur, $parent, $post, $like);
+		$em->persist($message);
+		$em->flush();
+	}
+
+
+	/**
+	* @brief Permet de rajouter un like dans la table
+	*
+	* @author LE VEVE Mathieu
+	*/
 	public static function addLike($id){
 		$em = dbconnection::getInstance()->getEntityManager();
         $messageRepository = $em->getRepository('message');
@@ -26,12 +41,29 @@ class messageTable {
         $em->flush($message);
 	}
 
+	/**
+	* @brief Permet de rajouter un dislike dans la table
+	*
+	* @author LE VEVE Mathieu
+	*/
 	public static function addDislike($id){
 		$em = dbconnection::getInstance()->getEntityManager();
         $messageRepository = $em->getRepository('message');
         $message = $messageRepository->findOneById($id);
         $message->aime -= 1;
         $em->flush($message);
+	}
+
+	/**
+	* @brief Permet de récupérer un message par son id
+	*
+	* @author LE VEVE Mathieu
+	*/
+	public static function getMessageById($id){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+        $messageRepository = $em->getRepository('message');
+		$message = $messageRepository->findOneById($id);
+		return $message; 
 	}
 }
 ?>
