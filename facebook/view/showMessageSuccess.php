@@ -4,15 +4,13 @@
 			<div class="message">
 				<div class="header-emetteur">
 					<?php if ($message->emetteur != NULL) : ?>
-						<?php if ($message->emetteur->id != NULL) : ?>
-							<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->emetteur->id)?>">
-								<?php if ($message->emetteur->avatar != NULL) : ?>
-									<img class="img-circle area-profile-avatar"  src="<?= htmlspecialchars($message->emetteur->avatar) ?>"/>
-								<?php else : ?>
-									<img class="img-circle area-profile-avatar"  src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png"/>
-								<?php endif; ?>
+						<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->emetteur->id)?>">
+							<?php if ($message->emetteur->avatar != NULL) : ?>
+								<img class="img-circle area-profile-avatar"  src="<?= htmlspecialchars($message->emetteur->avatar) ?>"/>
+							<?php else : ?>
+								<img class="img-circle area-profile-avatar"  src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png"/>
+							<?php endif; ?>
 							</a>
-						<?php endif; ?>
 					<?php else : ?>
 						<img class="img-circle area-profile-avatar"  src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png"/>
 					<?php endif; ?>
@@ -89,7 +87,6 @@
                         	<span class="glyphicon glyphicon-share"></span>
                         	Partager
                         </button>
-                       <!-- <input type="submit" value="Partager"/>-->
                     </form>
                 </div>
 

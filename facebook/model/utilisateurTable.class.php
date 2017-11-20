@@ -1,7 +1,6 @@
 <?php
 // Inclusion de la classe utilisateur
 require_once "utilisateur.class.php";
-
 class utilisateurTable {
 
 	public static function getUserByLoginAndPass($login,$pass){
@@ -27,16 +26,19 @@ class utilisateurTable {
 	}
 
 	/**
-	* Renvoie tous les utilisateurs de la base
+	* Renvoie tous les utilisateurs de la base (ordre alphabétique)
 	*
 	* @author Duret Nicolas
+	* @author LE VEVE Mathieu: edit le 18/11, affiche tous les users par ordre alphabétique (repris dans la vue displayFriendList)
 	*/
 	public static function getUsers() {
 		$em = dbconnection::getInstance()->getEntityManager() ;
-
 		$userRepository = $em->getRepository('utilisateur');
-		$users = $userRepository->findAll();
-
+		$users = $userRepository->findBy(
+			array(),
+			array('identifiant' => 'ASC')
+		);
+		
 		return $users;
 	}
 

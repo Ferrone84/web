@@ -1,5 +1,5 @@
 <div class="user-list">
-    <div class="user-label">Amis</div>
+    <div class="user-label">Amis <span class="friend-number"><?php echo (count($context->users));?></span></div>
     <!-- peut être rajouter le nombre d'amis enregistrés -->
     <div class="user-scrollable">
         <?php foreach($context->users as $user) : ?>

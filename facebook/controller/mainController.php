@@ -13,6 +13,24 @@ class mainController
 		return context::SUCCESS;
 	}
 
+	/**
+	* Action pour connecter l'utilisateur et affiche l'avatar du user dans le champs profil
+	* @author Duret Nicolas
+	*/
+	public static function headband($request, $context) {
+		$id = $context->getSessionAttribute('user_id');
+		$context->user_ = utilisateurTable::getUserById($id);
+		if (!empty($request['id'])) {
+			$id = strip_tags($request['id']);
+		}
+		$context->avatar_ = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+		if ($context->user_->avatar != NULL)
+			$context->avatar_ = $context->user_->avatar;
+
+		return context::SUCCESS;
+	}
+
+
 	public static function index($request,$context)
 	{
 		$context->setLayout("layout");

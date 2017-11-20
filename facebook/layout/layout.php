@@ -12,19 +12,19 @@
 	<body>
 		<div id="view">
 			<div class="container">
-				<?php include($template."headband.php"); ?>
-				<div id="notif" class="center"><?=$context->notif?></div>
-				<?php include($template_view); ?>
+				<?php addView("headband"); ?>
+				<div id="notif" class="row center"><?=$context->notif?></div>
+				<div class="col-sm-12">
+						<?php include($template_view); ?>
+				</div>
 				<br>
-				<footer>
-					<div class="row">
-						<div class="footer col-xs-12 navbar-fixed-bottom">
-							<span>&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
-						</div>
-					</div>
-				</footer>
 			</div>
 		</div>
+		<footer>
+				<div class="footer col-xs-12 navbar-fixed-bottom">
+					<span>&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
+				</div>
+		</footer>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
