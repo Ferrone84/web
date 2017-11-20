@@ -104,7 +104,7 @@ a {
 }
 
 #notif {
-	height: 40px;
+	min-height: 40px;
 	display: block;
 }
 
@@ -181,6 +181,10 @@ a {
 	content: ' »';
 }
 
+#statut_submit {
+	margin-left: 2px;
+}
+
 /* Partie chat */
 #chat {
 	background-color: white;
@@ -219,9 +223,10 @@ a {
 }
 
 #chats {
-	overflow-y: auto;
+	overflow-y: scroll;
 	overflow-x: hidden;
 	height: 300px;
+	min-width: 100%;
 }
 
 .chat_message {
@@ -258,6 +263,7 @@ a {
 .chat_message_post_user {
 	background-color: #0084ff;
 	color: white;
+	margin-left: 3px;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	padding-top: 2px;
@@ -268,13 +274,12 @@ a {
 
 #div_chat_form {
 	border-top: 1px solid gray;
-	padding-top: 2px;
-	padding-left: 4px;
-	padding-bottom: 2px;
-	min-height: 40px;
+	padding: 0.5rem;
+	min-width: 100%;
+	min-height: 100%;
 }
 
-#div_chat_form input {
+#texte_chat {
 	width: 70%;
 }
 
@@ -406,6 +411,7 @@ a {
 	font-family: Verdana;
 	font-size: 12px;
 	font-style: italic;
+	padding-bottom: 1rem;
 }
 
 .area-post{
@@ -416,5 +422,4 @@ a {
 
 .parent{
 	padding: 10px 0 10px 0;
-	padding-bottom: 1rem;
 }

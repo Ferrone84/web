@@ -254,7 +254,7 @@ class mainController
 
 		//----- variable contenant l'avatar -----
 		$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-		if ($context->user->avatar != NULL && substr($context->user->avatar, 0, 5) === "https")
+		if ($context->user->avatar != NULL /*&& substr($context->user->avatar, 0, 5) === "https"*/) //on rajoutera peut être cette option pour que le site soit full https
 			$context->avatar = $context->user->avatar;
 
 		//----- modifier le statut -----
@@ -275,8 +275,13 @@ class mainController
 	public static function chat($request, $context) {
 		$id = $context->getSessionAttribute('user_id');
 		$context->user = utilisateurTable::getUserById($id);
-		if(!empty($request['id'])) {
+
+		if (!empty($request['id'])) {
 			$context->id = '&amp;id='.htmlspecialchars($request['id']);
+		}
+		
+		if (!empty($request['page'])) {
+			$context->id = $context->id.'&amp;page='.htmlspecialchars($request['page']);
 		}
 
 		if (!empty($request['send_chat'])) {

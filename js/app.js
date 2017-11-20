@@ -11,7 +11,7 @@ $(document).ready(function(){
 		initChat();
 	}
 
-	//si on clique sur la zone de notification ça l'a vide
+	//si on clique sur la zone de notification ça la vide
 	$("#notif").on('click', function() {
 		$("#notif").empty();
 	});
@@ -62,11 +62,13 @@ function initChat() {
 
 	//------ Gère le chat ------
 	$("#reduce").on('click', function() {
+		saveWidth = $("#chat").width()+2;
 		saveHeight = $("#chat").height()+2;
 		$("#chats").css('display', 'none');
 		$("#chat_form").css('display', 'none');
 		$(this).hide();
 		$("#maximize").show();
+		$("#chat").css('width', '260');
 		$("#chat").css('height', '24');
 		$("#chat").resizable('disable');
 	});
@@ -76,6 +78,7 @@ function initChat() {
 		$("#chat_form").css('display', 'block');
 		$(this).hide();
 		$("#reduce").show();
+		$("#chat").css('width', saveWidth);
 		$("#chat").css('height', saveHeight);
 		$("#chat").resizable('enable');
 	});

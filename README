@@ -31,7 +31,7 @@ Nicolas :
 	- création d'un layoutProfil qui permet d'afficher toutes les vues pour le profil (dont l'action profil elle même), pour cela j'ai fait une fonction addView dans le dispatcher
 	- importation et utilisation de bootstrap (localisé dans le dossier lib/vendor/)
 	- toutes les vues sont responsives
-	- si on clique sur la zone de notification ça l'a vide (si l'utilisateur veut enlever le message)
+	- si on clique sur la zone de notification ça la vide (si l'utilisateur veut enlever le message)
 	
 	Bandeau -> headband :
 		- création d'une vue statique simple qui affiche le menu pour l'utilisateur
