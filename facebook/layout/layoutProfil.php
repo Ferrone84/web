@@ -13,7 +13,7 @@
 	<body>
 		<div id="view">
 			<div class="container">
-				<?php include($template."headband.php"); ?>
+				<?php addView("headband"); ?>
 				<div id="notif" class="row center"><?=$context->notif?></div>
 				<div class="row">
 					<div class="col-sm-3">

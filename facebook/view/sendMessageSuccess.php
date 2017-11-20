@@ -8,7 +8,7 @@
             </div>
             <div>
                 <button type="btn-submit col-sm-5">
-                    <span class="btn-label-submit">Envoyer votre message</span>
+                    <span class="glyphicon glyphicon-envelope"><span class="btn-label-submit"> Envoyer votre message</span></span>
                 </button>
             </div>
         </div>

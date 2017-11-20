@@ -65,5 +65,21 @@ class messageTable {
 		$message = $messageRepository->findOneById($id);
 		return $message; 
 	}
+
+	/**
+	* @brief Permet de récupérer tous les messages (pour le moment je n'en prends que 30, on fixera une autre valeur plus tard)
+	*
+	* @author LE VEVE Mathieu
+	*/
+	public static function getMessages(){
+		$em = dbconnection::getInstance()->getEntityManager() ;
+        $messageRepository = $em->getRepository('message');
+		$messages = $messageRepository->findBy(
+			array(),
+			array(),
+			30
+		);
+		return $messages; 
+	}
 }
 ?>

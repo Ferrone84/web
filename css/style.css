@@ -125,6 +125,11 @@ a {
 	padding: 15px 0 0 0;
 }
 
+.friend-number{
+	font-style: italic;
+	color: #90949c;
+}
+
 
 .user-id:hover a{
 	/*padding: 0 0 0 0;*/
@@ -307,7 +312,6 @@ a {
     font-style: italic;
     font-family: Roboto;
     font-size: 14px;
-    line-height: 1.18;
     text-align: center;
 }
 
@@ -332,7 +336,7 @@ a {
 }
 
 .message{
-	padding: 0 15px 0 15px;
+	padding: 15px 15px 15px 15px;
 	border-bottom-color: black;
 	border-bottom-width: 1px;
 	border-bottom-style: dotted;
@@ -367,9 +371,10 @@ a {
 .post{
 	font-family: inherit;
 	font-weight: bold;
+	margin-left: 10px;
 }
 .message-list{
-	padding: 15px 0 15px 0;
+	padding: 15px 0 0 0;
 	background-color: #ffffff;
 	border-radius:7px;
 }
