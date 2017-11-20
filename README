@@ -7,23 +7,23 @@ Pour spécifier le code effectué par chacun nous avons mis des tag @author.
 
 Mathieu :
 	Mur -> showMessage
-	    fonctionnalités: afficher la liste des messages en décroissant
-	    ajout des boutons: j'aime et je n'aime (pas encore implémentées)
-	    affichage des informations méta sur les messages
-	    ajout de la fonctionnalité 'Envoyer un message' en fonction de la page utilisateur
-	    Gestion des cas d'erreur
-	    Protection au XSS sur les formulaires
-	    Ajout du responsive avec Boostrap
-	    Ajout d'une vue Pagination qui gère l'affichage de 5 messages / page.
-	    Ajout d'un footer.
+		fonctionnalités: afficher la liste des messages en décroissant
+		ajout des boutons: j'aime et partage
+		affichage des informations méta sur les messages
+		ajout de la fonctionnalité 'Envoyer un message' en fonction de la page utilisateur
+		Gestion des cas d'erreur
+		Protection au XSS sur les formulaires
+		Ajout du responsive avec Boostrap
+		Ajout d'une vue Pagination qui gère l'affichage de 5 messages / page.
+		Ajout d'un footer.
 
 	amis -> displayFriendList
-	    affichage de la liste d'amis
-	    Affichage du profil complet lors d'un click sur ami
-	    Ajout d'une scrolling bar
-	    Gestion des cas d'erreurs
-	    Protection au XSS sur les formulaires
-	    Ajout du responsive avec Boostrap
+		affichage de la liste d'amis par ordre alphabétique, avec un compteur d'amis
+		Affichage du profil complet lors d'un click sur ami
+		Ajout d'une scrolling bar
+		Gestion des cas d'erreurs
+		Protection au XSS sur les formulaires
+		Ajout du responsive avec Boostrap
 
 
 Nicolas :
