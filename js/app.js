@@ -38,6 +38,18 @@ $(document).ready(function(){
 		updateStatut(form);
 	});
 
+	//si on valide le formulaire d'envoie d'avatar
+	$("#form_avatar").submit(function(event){
+		event.preventDefault(); //évite le comportement par défault du bouton
+		if ($("#texte_avatar").val().length === 0) {
+			$("#notif").html("<span class=\"error\">Vous ne pouvez pas envoyer d'avatar vide.</span>");
+			$("#avatar_submit").blur(); //enlève le focus du bouton
+			return;
+		}
+		var form = this;
+		updateAvatar(form);
+	});
+
 	//si on valide le formulaire d'envoie de chat
 	$("#chat_form").submit(function(event){
 		event.preventDefault(); //évite le comportement par défault du bouton
@@ -59,7 +71,7 @@ $(document).ready(function(){
 function initChat() {
 	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
 
-	$("#chat").resizable({ alsoResize: "#chats,#chat_form", minWidth: 260, minHeight: 230, handles: 'n, e, s, w, nw, ne, sw, se' });
+	$("#chat").resizable({ alsoResize: "#chats", minWidth: 260, minHeight: 230, handles: 'n, e, s, w, nw, ne, sw, se' });
 	$("#chat").draggable({ cursor: "move", handle: "#chat_toolbar" });
 
 	//------ Gère le chat ------
@@ -123,7 +135,32 @@ function updateStatut(form) {
 			$("#notif").html("<span class=\"success\">Vous avez bien modifié votre statut.</span>");
 		},
 		error: function() {
-			$("#notif").html("<span class=\"error\">Erreur lors de la modiffication du profil.</span>");
+			$("#notif").html("<span class=\"error\">Erreur lors de la modification du statut.</span>");
+		}
+	});
+}
+
+function updateAvatar(form) {
+	var data = new FormData(form);
+	data.append('avatar_submit', '');
+
+	$.ajax({
+		type: "POST", //type de la requette ajax
+		url:'facebookAjax.php?action=profil', //page sur laquelle on effectue la requette
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(data)	{
+			var hiddenValueNotif = $('#notif_avatar', $(data)).val(); //récuppère ce que contient le context->notif
+			retour_view = $(data).find('#profil_avatar').html(); //récuppère tout ce qui est contenu dans la div avec l'id profil_avatar
+			$("#profil_avatar").empty().append(retour_view);
+			form.reset(); //reset tous les champs du formulaire
+			$("#avatar_submit").blur(); //enlève le focus du bouton
+			$("#notif").html(hiddenValueNotif);
+		},
+		error: function() {
+			$("#notif").html("<span class=\"error\">Erreur lors de la modification de l'avatar.</span>");
 		}
 	});
 }

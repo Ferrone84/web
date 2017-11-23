@@ -1,6 +1,6 @@
 /!\ Ce ReadMe servira à signaler des informations aux professeurs /!\
 
-Pour ce TP4 nous nous sommes réparties les tâches de façon à ce que Mathieu fasse la gestion du mur et des amis en Ajax, et que moi je fasse la gestion du chat et du profil en Ajax.
+Pour ce TP4 nous nous sommes réparties les tâches de façon à ce que Mathieu fasse la gestion du mur et des amis en Ajax, et que moi je fasse la gestion du chat et du profil en Ajax (car j'avais déjà fait la partie ajax du profil et du chat au tp3).
 
 Pour spécifier le code effectué par chacun nous avons mis des tag @author.
 
@@ -9,4 +9,8 @@ Mathieu :
 
 
 Nicolas :
-	
+	Sur ce tp j'ai ajouté :
+		- un formulaire pour l'avatar, php et ajax fonctionnel. (il faut que le lien de l'image existe sinon l'utilisateur est notifié d'une erreur)
+		- une méthode qui récuppère tous les chats plus récent qu'une certaine date
+		- chat rafraichit toutes les 10 secondes
+		- si un nouveau chat est reçus la fenetre de chat clignote et est mise à jour

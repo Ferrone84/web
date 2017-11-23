@@ -186,7 +186,7 @@ a {
 	content: ' »';
 }
 
-#statut_submit {
+#statut_submit, #avatar_submit {
 	margin-left: 2px;
 }
 
@@ -236,7 +236,9 @@ a {
 
 .chat_message {
 	padding-left: 0.5em;
+	padding-bottom: 5px;
 	word-wrap: break-word;
+	max-width: 100%;
 }
 
 .chat_message_id {
@@ -247,17 +249,16 @@ a {
 .chat_message_post {
 	background-color: #86BB71;
 	padding-left: 0.5em;
-	padding-right: 0.5em;
+	margin-right: 0.5em;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 10px;
-	display: inline-block;
 }
 
 .chat_message_user {
 	padding-right: 0.5em;
-	text-align: right;
 	word-wrap: break-word;
+	text-align: right;
 }
 
 .chat_message_id_user {
@@ -274,7 +275,6 @@ a {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 10px;
-	display: inline-block;
 }
 
 #div_chat_form {

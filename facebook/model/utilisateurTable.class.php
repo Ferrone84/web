@@ -43,7 +43,7 @@ class utilisateurTable {
 	}
 
 	/**
-	* Renvoie tous les utilisateurs de la base
+	* Met à jour l'objet $user dans la base de donnée
 	*
 	* @author Duret Nicolas
 	*/

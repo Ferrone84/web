@@ -9,7 +9,9 @@
 			<?php if ($chat->emetteur != NULL && $chat->post != NULL) : ?>
 				<?php if ($context->user->id != $chat->emetteur->id) : ?>
 				<div class="chat_message">
-					<span class="chat_message_id">@<?= htmlspecialchars($chat->emetteur->identifiant) ?></span>
+					<a href="facebook.php?action=profil&id=<?=$chat->emetteur->id?>">
+						<span class="chat_message_id">@<?= htmlspecialchars($chat->emetteur->identifiant) ?></span>
+					</a>
 					<br>
 					<div class="chat_message_post"><?= htmlspecialchars($chat->post->texte) ?></div>
 				</div>
