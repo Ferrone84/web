@@ -1,56 +1,12 @@
 /!\ Ce ReadMe servira à signaler des informations aux professeurs /!\
 
-Pour ce TP3 nous nous sommes réparties les tâches de façon à ce que Mathieu fasse la gestion du mur et des amis, et que moi je fasse la gestion du chat et du profil.
-Nous avons donc fait les views qui correspondent aux actions respectivent que nous avions.
+Pour ce TP4 nous nous sommes réparties les tâches de façon à ce que Mathieu fasse la gestion du mur et des amis en Ajax, et que moi je fasse la gestion du chat et du profil en Ajax.
 
 Pour spécifier le code effectué par chacun nous avons mis des tag @author.
 
 Mathieu :
-	Mur -> showMessage
-		fonctionnalités: afficher la liste des messages en décroissant
-		ajout des boutons: j'aime et partage
-		affichage des informations méta sur les messages
-		ajout de la fonctionnalité 'Envoyer un message' en fonction de la page utilisateur
-		Gestion des cas d'erreur
-		Protection au XSS sur les formulaires
-		Ajout du responsive avec Boostrap
-		Ajout d'une vue Pagination qui gère l'affichage de 5 messages / page.
-		Ajout d'un footer.
-
-	amis -> displayFriendList
-		affichage de la liste d'amis par ordre alphabétique, avec un compteur d'amis
-		Affichage du profil complet lors d'un click sur ami
-		Ajout d'une scrolling bar
-		Gestion des cas d'erreurs
-		Protection au XSS sur les formulaires
-		Ajout du responsive avec Boostrap
+	
 
 
 Nicolas :
-	Général : 
-	- création d'un layoutProfil qui permet d'afficher toutes les vues pour le profil (dont l'action profil elle même), pour cela j'ai fait une fonction addView dans le dispatcher
-	- importation et utilisation de bootstrap (localisé dans le dossier lib/vendor/)
-	- toutes les vues sont responsives
-	- si on clique sur la zone de notification ça la vide (si l'utilisateur veut enlever le message)
 	
-	Bandeau -> headband :
-		- création d'une vue statique simple qui affiche le menu pour l'utilisateur
-
-	Profil -> profil
-		- affichage du profil avec son avatar/pseudo/statut (si on précise un id en GET, cela affiche le profil de l'utilisateur spécifié, s'il n'existe pas -> affiche le profil de l'utilisateur connecté)
-		- création d'un formulaire pour changer son statut
-		- le formulaire pour changer son statut est totalement fonctionnel en php et en js/ajax
-		- on ne peut pas envoyer de statut vide
-		- notifie l'utilisateur à chaque actions
-
-	Chat -> chat :
-		- création d'une div contenant tout le chat (avec une taille minimum)
-		- le chat affiche les 15 derniers chats de la base de données
-		- création d'un formulaire d'envoie de chat
-		- le formulaire de chat est totalement fonctionnel en php et en js/ajax
-		- le chat est déplaçable et redimentionnable
-		- on peut cliquer sur le bouton en haut à droite du chat pour le faire devenir tout petit (réduire)
-		- si le chat est réduit on ne peut plus le redimentionner mais on peut toujours le déplacer (au cas où il gène l'utilisateur)
-		- si le chat est réduit on peut cliquer sur le bouton en haut à droite pour le faire redevenir grand (à sa précedente taille gardée en mémoire)
-		- on ne peut pas envoyer de chat vide
-		- notifie l'utilisateur à chaque actions
