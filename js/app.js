@@ -50,6 +50,8 @@ $(document).ready(function(){
 		sendChat(form);
 	});
 
+	//ici tu met ton formulaire quand il est submit
+
 });
 
 
@@ -149,4 +151,6 @@ function sendChat(form) {
 		}
 	});
 }
+
+//et ici tu met la fonction qui correspond en ajax
 
