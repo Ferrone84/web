@@ -60,6 +60,34 @@ class chatTable {
 		$em->persist($chat);
 		$em->flush();
 	}
+
+	/**
+	* Méthode qui retourne les chats plus récent que l'id $id
+	*
+	* @author Duret Nicolas
+	*/
+	public static function getRecentChats($id){
+		$em = dbconnection::getInstance()->getEntityManager();
+		try{
+			$qb = $em->createQueryBuilder();
+
+			$chats = $em->createQueryBuilder()
+			->select('chat')
+			->from('chat', 'chat')
+			->where('chat.emetteur IS NOT NULL')
+			->andWhere('chat.post IS NOT NULL')
+			->where(
+			 $qb->expr()->gt('chat.id', $id)
+			)
+			->orderBy('chat.id', 'ASC')
+			->getQuery()->GetResult();
+		}
+		catch(Exception $e) {
+			echo $e->getMessage();
+		}
+
+		return $chats;
+	}
 }
 
 ?>

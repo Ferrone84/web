@@ -25,7 +25,7 @@ class mainController
 		}
 		$context->avatar_ = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
 		if ($context->user_->avatar != NULL) {
-			if (@fopen($context->user->avatar, "r")) {
+			if (@fopen($context->user_->avatar, "r")) {
 				$context->avatar_ = $context->user_->avatar;
 			}
 		}
@@ -326,7 +326,15 @@ class mainController
 			chatTable::addChat($emetteur, $texte);
 		}
 		
-		$context->chats = array_reverse(chatTable::getXLastChats(15));
+		//si on est dans le cas où l'ajax demande s'il y a de nouveaux messages
+		if (!empty($request['refresh']))
+			$chats = chatTable::getRecentChats($request['refresh']);
+		//sinon on get les 15 derniers messages normalement
+		else
+			$chats = array_reverse(chatTable::getXLastChats(15));
+
+		$context->chats = $chats;
+		$context->lastChatId = @end($chats)->id;
 
 		return context::SUCCESS;
 	}

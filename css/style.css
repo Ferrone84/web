@@ -195,8 +195,12 @@ a {
 	background-color: white;
 	border: 1px solid black;
 	width: 260px;
+	height: 230px;
 	z-index: 10;
 	position: fixed;
+	display: flex!important;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 #chat_toolbar {
@@ -228,10 +232,12 @@ a {
 }
 
 #chats {
+	flex: 1 1 auto;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	height: 300px;
 	min-width: 100%;
+	max-width: 100%;
 }
 
 .chat_message {
@@ -239,6 +245,9 @@ a {
 	padding-bottom: 5px;
 	word-wrap: break-word;
 	max-width: 100%;
+	float: left;
+	clear: both;
+	overflow: auto;
 }
 
 .chat_message_id {
@@ -253,17 +262,25 @@ a {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 10px;
+	padding: 4px 8px;
+	word-wrap: break-word;
 }
 
 .chat_message_user {
 	padding-right: 0.5em;
+	padding-bottom: 5px;
 	word-wrap: break-word;
-	text-align: right;
+	max-width: 100%;
+	float: right;
+	clear: both;
+	overflow: auto;
 }
 
 .chat_message_id_user {
 	padding-right: 0.5em;
 	color: gray;
+	float: right;
+	clear: both;
 }
 
 .chat_message_post_user {
@@ -275,17 +292,25 @@ a {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 10px;
+	padding: 4px 8px;
+	text-align: left;
+	word-wrap: break-word;
+	overflow: auto;
 }
 
 #div_chat_form {
 	border-top: 1px solid gray;
 	padding: 0.5rem;
 	min-width: 100%;
-	min-height: 100%;
+	max-height: 100%;
 }
 
 #texte_chat {
 	width: 70%;
+}
+
+#chats p {
+	margin: 0;
 }
 
 
