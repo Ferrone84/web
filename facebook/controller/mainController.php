@@ -113,6 +113,7 @@ class mainController
         		$page = strip_tags($request['page']);
         	}
 
+
             if(!empty($request['mess_id'])){
                     messageTable::addLike($request['mess_id']);
             }

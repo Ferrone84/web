@@ -5,7 +5,7 @@
 				<div class="header-emetteur">
 					<?php if ($message->emetteur != NULL) : ?>
 						<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->emetteur->id)?>">
-							<?php if ($message->emetteur->avatar != NULL) : ?>
+							<?php if ($message->emetteur->avatar != NULL && substr($message->emetteur->avatar, 0, 4) === "http") : ?>
 								<img class="img-circle area-profile-avatar"  src="<?= htmlspecialchars($message->emetteur->avatar) ?>"/>
 							<?php else : ?>
 								<img class="img-circle area-profile-avatar"  src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png"/>
@@ -70,14 +70,15 @@
 					<?php endif; ?>
 				<?php endif; ?>
 
-                <div class="div-like">
-                    <form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
-                        <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
-                        <button type="submit" class="btn-aime btn btn-link">
+                <div class="div-like" data-myValue ="<?= htmlspecialchars($message->id)?>">
+                    <form class="like_form" action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
+                        <input class="hidden-id" type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
+                        <button id="send_like" type="submit" class="btn-aime btn btn-link">
                         	<span class="glyphicon glyphicon-thumbs-up"></span>
                         	J'aime
                         </button>
                     </form>
+                    <?= htmlspecialchars($message->id)?>
                 </div>
 
                 <div class="div-share">

@@ -52,6 +52,14 @@ $(document).ready(function(){
 
 	//ici tu met ton formulaire quand il est submit
 
+	$(".like_form").submit(function(event){
+		event.preventDefault(); //évite le comportement par défault du bouton
+		var form = this;
+		id = $(this).find(".hidden-id").val();
+		//alert(id);
+		likeUpdating(form,id);
+	});
+
 });
 
 
@@ -152,5 +160,42 @@ function sendChat(form) {
 	});
 }
 
-//et ici tu met la fonction qui correspond en ajax
+//en travaux
+
+function likeUpdating(form, id) {
+	var data = new FormData(form);
+	data.append('send_like', '');
+
+	$.ajax({
+		type: "POST", //type de la requette ajax
+		url:'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requette
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(data)	{
+			div = "";
+			temp = $(data).find("div.like");
+			//console.log(id);
+			console.log(temp);
+			console.log("id : "+id);
+			for (var i =0; i < temp.length; i++)
+			{
+				console.log(i + " : "+temp[i].children);
+				/*if (temp[i].children[3].attributes[1].value === id){
+					console.log(temp[i].children[3].attributes[1]);
+					//div = temp[i].children[3];
+				}*/
+			}
+			/*test =  $(div).parent().find(".like")[0].innerText;
+			console.log(test);
+			$(div).empty().append(test);*/
+			$("#notif").html("<span class=\"success\">Vous avez bien laisse un like.</span>");
+		},
+		error: function() {
+			$("#notif").html("<span class=\"error\">Erreur lors de la mise à jour du like.</span>");
+		}
+	});
+}
+
 
