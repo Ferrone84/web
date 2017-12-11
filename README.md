@@ -10,7 +10,7 @@ Pour le tp4 il reste à :
 ----- partie commune -----
 
 
------ ma partie -----
+----- Nicolas -----
 + un formulaire pour l'avatar, php et ajax fonctionnel. (il faut que le lien de l'image existe sinon l'utilisateur est notifié d'une erreur)
 + une méthode qui récuppère tous les chats plus récent qu'un certain id
 + chat rafraichit toutes les 10 secondes
@@ -19,5 +19,9 @@ Pour le tp4 il reste à :
 
 - chat css
 
------ ta partie -----
-
+----- Mathieu -----
+- Re gérer la pagination (ajout Previous/ Next)
+- Finaliser Ajax sur partager
+- Finaliser Ajax pour envoie Messages
+- Ajouter l'ajout d'un fichier sur les messages
++ Finaliser Ajax pour la gestion des like

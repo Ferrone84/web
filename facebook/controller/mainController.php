@@ -120,6 +120,21 @@ class mainController
             if(!empty($request['mess_id'])){
                     messageTable::addLike($request['mess_id']);
             }
+            
+            if(!empty($request['mess_id_share'])){
+				$context->message = messageTable::getMessageById(strip_tags($request['mess_id_share']));
+				$emetteur = $context->getSessionAttribute('user_id');
+				$emetteur = utilisateurTable::getUserById($emetteur);
+				if($context->message->parent!= $emetteur) {
+					if($context->message->post !== NULL) {
+						//echo($emetteur->id.', '.$parent.', '.$context->message->post->id.', '.'0');
+						messageTable::addSharedMessage($emetteur, 
+							($context->message->parent != null ? $context->message->parent : $context->message->emetteur),
+							$context->message->post,
+							0);
+					}
+				}
+            }
 
 			$context->messages = $context->user->messages; 
 			if($context->messages[0] != NULL) { 
@@ -230,21 +245,6 @@ class mainController
 				$destinataire = utilisateurTable::getUserById(strip_tags($request['id']));
 				messageTable::addMessage($emetteur, $destinataire, $emetteur, $texte, 0);
 			}
-
-			if(!empty($request['mess_id_share'])){
-				$context->message = messageTable::getMessageById(strip_tags($request['mess_id_share']));
-				$emetteur = $context->getSessionAttribute('user_id');
-				$emetteur = utilisateurTable::getUserById($emetteur);
-				if($context->message->parent!= $emetteur) {
-					if($context->message->post !== NULL) {
-						//echo($emetteur->id.', '.$parent.', '.$context->message->post->id.', '.'0');
-						messageTable::addSharedMessage($emetteur, 
-							($context->message->parent != null ? $context->message->parent : $context->message->emetteur),
-							$context->message->post,
-							0);
-					}
-				}
-            }
 
             return context::SUCCESS;
 		}

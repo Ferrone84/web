@@ -1,7 +1,7 @@
 <div class = "message-list">
 	<div class="messages">
 		<?php foreach($context->messageList as $message) : ?>
-			<div class="message">
+			<div class="message" id="<?= htmlspecialchars($message->id)?>">
 				<div class="header-emetteur">
 					<?php if ($message->emetteur != NULL) : ?>
 						<a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($message->emetteur->id)?>">
@@ -70,7 +70,7 @@
 					<?php endif; ?>
 				<?php endif; ?>
 
-                <div class="div-like" data-myValue ="<?= htmlspecialchars($message->id)?>">
+                <div class="div-like">
                     <form class="like_form" action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
                         <input class="hidden-id" type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
                         <button id="send_like" type="submit" class="btn-aime btn btn-link">
@@ -78,13 +78,12 @@
                         	J'aime
                         </button>
                     </form>
-                    <?= htmlspecialchars($message->id)?>
                 </div>
 
                 <div class="div-share">
-                    	<form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->current_user->id)?>&amp;page=1" method="POST">
+                    	<form class="share-form" action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?>&amp;page=<?=htmlspecialchars($context->page)?>" method="POST">
                         <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id_share"/>
-                        <button type="submit">
+                        <button id="btn-share" type="submit">
                         	<span class="glyphicon glyphicon-share"></span>
                         	Partager
                         </button>

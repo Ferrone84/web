@@ -2,6 +2,7 @@
 * Fichier contenant tout le js executé dans l'application
 *
 * @author Duret Nicolas
+* @author LE VEVE Mathieu
 */
 $(document).ready(function(){
 	//------ Partie Initialisation ------
@@ -63,14 +64,28 @@ $(document).ready(function(){
 		sendChat(form);
 	});
 
-	//ici tu met ton formulaire quand il est submit
-
+	/*
+	* @author LE VEVE Mathieu
+	* @brief si on appuie sur le bouton like
+	*
+	*
+	*/
 	$(".like_form").submit(function(event){
 		event.preventDefault(); //évite le comportement par défault du bouton
 		var form = this;
 		id = $(this).find(".hidden-id").val();
-		//alert(id);
 		likeUpdating(form,id);
+	});
+
+	/*
+	* @author LE VEVE Mathieu
+	* @brief si on appuie sur le bouton partager
+	*
+	*/
+	$(".share-form").submit(function(event){
+		event.preventDefault(); //évite le comportement par défault du bouton
+		var form = this;
+		shareUpdating(form);
 	});
 
 });
@@ -248,40 +263,76 @@ function sendChat(form) {
 	});
 }
 
-//en travaux
-
+/*
+* @author LE VEVE Mathieu
+* @brief Cette fonction ajax permet de mettre à jour le champ like selon l'id d'un message récupéré par la fonction
+* 		js. 
+*
+*
+*/
 function likeUpdating(form, id) {
 	var data = new FormData(form);
 	data.append('send_like', '');
+	var url_ending = window.location.href;
+	url_ending = url_ending.split("profil");
+	// permet de rester sur la bonne URL (et de prendre les bons id message)
+	url_ending = url_ending[1];
+	// récupère tout ce qui se trouve après "profil"
 
 	$.ajax({
 		type: "POST", //type de la requette ajax
-		url:'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requette
+		url:'facebookAjax.php?action=showMessage&id='+url_ending, //page sur laquelle on effectue la requette
 		data: data,
 		cache: false,
 		contentType: false,
 		processData: false,
 		success: function(data)	{
-			div = "";
 			temp = $(data).find("div.like");
-			//console.log(id);
-			console.log(temp);
-			console.log("id : "+id);
-			for (var i =0; i < temp.length; i++)
+			for (var i = 0; i < temp.length; i++)
 			{
-				console.log(i + " : "+temp[i].children);
-				/*if (temp[i].children[3].attributes[1].value === id){
-					console.log(temp[i].children[3].attributes[1]);
-					//div = temp[i].children[3];
-				}*/
+				if (temp[i].parentElement.attributes[1].value === id){
+					div = temp[i].firstChild.textContent;
+					div = div.split(' ')[44]+' '+div.split(' ')[45];
+					index = i;
+				}
 			}
-			/*test =  $(div).parent().find(".like")[0].innerText;
-			console.log(test);
-			$(div).empty().append(test);*/
+
+			$('.like')[index].innerText = div;
 			$("#notif").html("<span class=\"success\">Vous avez bien laisse un like.</span>");
 		},
 		error: function() {
 			$("#notif").html("<span class=\"error\">Erreur lors de la mise à jour du like.</span>");
+		}
+	});
+}
+
+/*
+* @author LE VEVE Mathieu
+* @brief 
+* statut: fini mais a re factoriser pour traiter un cas  !! 
+*
+*/
+function shareUpdating(form) {
+	var data = new FormData(form);
+	data.append('btn-share', '');
+	var url = window.location.href;
+	url_ending = url.split("profil");
+	// permet de rester sur la bonne URL (et de prendre les bons id message)
+	url_ending = url_ending[1];
+	// récupère tout ce qui se trouve après "profil"
+
+	$.ajax({
+		type: "POST", //type de la requette ajax
+		url:'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requete
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(data)	{
+			$("#notif").html("<span class=\"success\">Vous avez bien partagé ce message.</span>");
+		},
+		error: function() {
+			$("#notif").html("<span class=\"error\">Erreur lors de la mise à jour du message.</span>");
 		}
 	});
 }
