@@ -5,8 +5,11 @@ Pour ce TP4 nous nous sommes réparties les tâches de façon à ce que Mathieu 
 Pour spécifier le code effectué par chacun nous avons mis des tags @author.
 
 Mathieu :
-	
-
+	Sur ce tp j'ai ajouté:
+		- La partie Ajax pour la gestion des like.
+		- Correction de la vue showMessage concernant le partage (ne redirige plus sur le profil de l'utilisateur connecté après un partage).
+		- Correction de l'action sendMessage qui gérait le partage (deleguée a showMessage)
+		- La partie Ajax pour la gestion des partage.
 
 Nicolas :
 	Sur ce tp j'ai ajouté :
