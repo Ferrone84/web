@@ -6,13 +6,16 @@
 $(document).ready(function(){
 	//------ Partie Initialisation ------
 
+	//@author Duret Nicolas
 	//si le chat est sur la vue courrante
 	if ($("#chat").length) {
 		var chat_twinkle;
 		initChat();
 		refreshChat();
+		chatTwinkle();
 	}
 
+	//@author Duret Nicolas
 	//si on clique sur la zone de notification ça la vide
 	$("#notif").on('click', function() {
 		$("#notif").empty();
@@ -21,12 +24,14 @@ $(document).ready(function(){
 
 	//------ Partie Ajax ------
 
+	//@author Duret Nicolas
 	//si on click sur le lien de déconnection
 	$("#logout").on('click', function(event){
 		event.preventDefault(); //évite le comportement par défault du lien
 		logout();
 	});
 
+	//@author Duret Nicolas
 	//si on valide le formulaire d'envoie de statut
 	$("#form_statut").submit(function(event){
 		event.preventDefault(); //évite le comportement par défault du bouton
@@ -39,6 +44,7 @@ $(document).ready(function(){
 		updateStatut(form);
 	});
 
+	//@author Duret Nicolas
 	//si on valide le formulaire d'envoie d'avatar
 	$("#form_avatar").submit(function(event){
 		event.preventDefault(); //évite le comportement par défault du bouton
@@ -51,6 +57,7 @@ $(document).ready(function(){
 		updateAvatar(form);
 	});
 
+	//@author Duret Nicolas
 	//si on valide le formulaire d'envoie de chat
 	$("#chat_form").submit(function(event){
 		event.preventDefault(); //évite le comportement par défault du bouton
@@ -69,6 +76,7 @@ $(document).ready(function(){
 
 
 //------ Toutes les fonctions utilisées dans l'application ------
+//@author Duret Nicolas
 function initChat() {
 	$("#chats").scrollTop($("#chats").prop('scrollHeight'));
 
@@ -101,8 +109,13 @@ function initChat() {
 	$("#chats").on('click', function() {
 		stopChatTwinkle();
 	});
+
+	$("#texte_chat").on('click', function() {
+		stopChatTwinkle();
+	});
 }
 
+//@author Duret Nicolas
 function refreshChat() {
 	lastChatId = $("#last_id").val();
 	url = 'facebookAjax.php?action=chat&refresh='+lastChatId;
@@ -131,23 +144,27 @@ function refreshChat() {
 	setTimeout(refreshChat, 10000); //rappel cette fonction toutes les 10 secondes
 }
 
+//@author Duret Nicolas
 function chatTwinkle() {
-	$("#chat_toolbar").css('background-color', 'red');
-	chat_twinkle = setTimeout(function() {
+	if ($("#chat_toolbar").css('background-color') == 'rgb(66, 103, 178)')
+		$("#chat_toolbar").css('background-color', 'red');
+	else
 		$("#chat_toolbar").css('background-color', '#4267b2');
-	}, 500);
-	chat_twinkle = setTimeout(chatTwinkle, 1000);
+	chat_twinkle = setTimeout(chatTwinkle, 500);
 }
 
+//@author Duret Nicolas
 function stopChatTwinkle() {
 	try {
 		$("#chat_toolbar_texte").empty().append("Chat");
 		$("#nb_notif").val(0);
 		clearTimeout(chat_twinkle);
+		$("#chat_toolbar").css('background-color', '#4267b2');
 	} 
 	catch (err) { }
 }
 
+//@author Duret Nicolas
 function logout() {
 	$.ajax({
 		type: "POST", //type de la requette ajax
@@ -166,6 +183,7 @@ function logout() {
 	});
 }
 
+//@author Duret Nicolas
 function updateStatut(form) {
 	var data = new FormData(form);
 	data.append('statut_submit', '');
@@ -190,6 +208,7 @@ function updateStatut(form) {
 	});
 }
 
+//@author Duret Nicolas
 function updateAvatar(form) {
 	var data = new FormData(form);
 	data.append('avatar_submit', '');
@@ -215,6 +234,7 @@ function updateAvatar(form) {
 	});
 }
 
+//@author Duret Nicolas
 function sendChat(form) {
 	var data = new FormData(form);
 	data.append('chat_submit', '');
@@ -233,6 +253,7 @@ function sendChat(form) {
 			$("#chat_submit").blur(); //enlève le focus du bouton
 			$("#notif").html("<span class=\"success\">Vous avez bien envoyé votre chat.</span>");
 			$("#last_id").val( +$("#last_id").val() + 1 );
+			$("#chats").scrollTop($("#chats").prop('scrollHeight'));
 		},
 		error: function() {
 			$("#notif").html("<span class=\"error\">Erreur lors de l'envoie d'un chat.</span>");

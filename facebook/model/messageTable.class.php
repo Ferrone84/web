@@ -35,10 +35,10 @@ class messageTable {
 	*/
 	public static function addLike($id){
 		$em = dbconnection::getInstance()->getEntityManager();
-        $messageRepository = $em->getRepository('message');
-        $message = $messageRepository->findOneById($id);
-        $message->aime += 1;
-        $em->flush($message);
+		$messageRepository = $em->getRepository('message');
+		$message = $messageRepository->findOneById($id);
+		$message->aime += 1;
+		$em->flush($message);
 	}
 
 	/**
@@ -48,10 +48,10 @@ class messageTable {
 	*/
 	public static function addDislike($id){
 		$em = dbconnection::getInstance()->getEntityManager();
-        $messageRepository = $em->getRepository('message');
-        $message = $messageRepository->findOneById($id);
-        $message->aime -= 1;
-        $em->flush($message);
+		$messageRepository = $em->getRepository('message');
+		$message = $messageRepository->findOneById($id);
+		$message->aime -= 1;
+		$em->flush($message);
 	}
 
 	/**
@@ -61,7 +61,7 @@ class messageTable {
 	*/
 	public static function getMessageById($id){
 		$em = dbconnection::getInstance()->getEntityManager() ;
-        $messageRepository = $em->getRepository('message');
+		$messageRepository = $em->getRepository('message');
 		$message = $messageRepository->findOneById($id);
 		return $message; 
 	}
@@ -73,13 +73,57 @@ class messageTable {
 	*/
 	public static function getMessages(){
 		$em = dbconnection::getInstance()->getEntityManager() ;
-        $messageRepository = $em->getRepository('message');
+		$messageRepository = $em->getRepository('message');
 		$messages = $messageRepository->findBy(
 			array(),
 			array(),
 			30
 		);
 		return $messages; 
+	}
+
+	/**
+	* Renvoie tous les messages de la base, ordonnés par id
+	*
+	* @author Duret Nicolas
+	*/
+	public static function getAllMessages() {
+		$em = dbconnection::getInstance()->getEntityManager() ;
+		$messageRepository = $em->getRepository('message');
+		$messages = $messageRepository->findBy(
+			array(),
+			array('id' => 'ASC')
+		);
+		
+		return $messages;
+	}
+
+	/**
+	* Renvoie un nombre $nombre de messages aléatoire
+	*
+	* @author Duret Nicolas
+	*/
+	public static function getRandMessages($nombre) {
+		$em = dbconnection::getInstance()->getEntityManager() ;
+		$messageRepository = $em->getRepository('message');
+		$all_message = messageTable::getAllMessages();
+
+		$messages_ids = array();
+		foreach ($all_message as $message) {
+			array_push($messages_ids, (int)$message->id);
+		}
+
+		shuffle($messages_ids);
+		$messages_id = array_slice($messages_ids, 0, $nombre);
+
+		$messages = array();
+		foreach ($messages_id as $id) {
+			$message =  messageTable::getMessageById($id);
+			if ($message != NULL) //au cas où
+				array_push($messages, $message);
+		}
+
+		return (object)$messages;
 	}
 }
 ?>

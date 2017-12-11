@@ -250,8 +250,7 @@ a {
 	overflow: auto;
 }
 
-.chat_message_id {
-	padding-left: 0.5em;
+.chat_message_id, .chat_message_id_user {
 	color: gray;
 }
 
@@ -276,11 +275,8 @@ a {
 	overflow: auto;
 }
 
-.chat_message_id_user {
-	padding-right: 0.5em;
-	color: gray;
-	float: right;
-	clear: both;
+.chat_message_user_container {
+	text-align: right;
 }
 
 .chat_message_post_user {

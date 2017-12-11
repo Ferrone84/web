@@ -15,9 +15,7 @@ Pour le tp4 il reste à :
 + une méthode qui récuppère tous les chats plus récent qu'un certain id
 + chat rafraichit toutes les 10 secondes
 + si un nouveau chat est reçus la fenetre de chat clignote et est mise à jour
-- faire un accueil avec des messages random
-
-- chat css
++ faire un accueil avec des messages random
 
 ----- ta partie -----
 

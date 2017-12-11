@@ -12,14 +12,21 @@
 					<a href="facebook.php?action=profil&id=<?=$chat->emetteur->id?>">
 						<span class="chat_message_id">@<?= htmlspecialchars($chat->emetteur->identifiant) ?></span>
 					</a>
+					<span>[<?=htmlspecialchars($chat->post->date->format('H:i'))?>]</span>
 					<br>
-					<div class="chat_message_post"><p><?= htmlspecialchars($chat->post->texte) ?></p></div>
+					<div class="chat_message_post">
+						<p><?= htmlspecialchars($chat->post->texte) ?></p>
+					</div>
 				</div>
 				<?php else : ?>
 				<div class="chat_message_user">
-					<span class="chat_message_id_user"> Moi </span>
-					<br>
-					<div class="chat_message_post_user"><p><?= htmlspecialchars($chat->post->texte) ?></p></div>
+					<div class="chat_message_user_container">
+						<span class="chat_message_id_user"> Moi </span>
+						<span>[<?=htmlspecialchars($chat->post->date->format('H:i'))?>]</span>
+					</div>
+					<div class="chat_message_post_user">
+						<p><?= htmlspecialchars($chat->post->texte) ?></p>
+					</div>
 				</div>
 				<?php endif; ?>
 			<?php endif; ?>

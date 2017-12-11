@@ -33,10 +33,20 @@ class mainController
 		return context::SUCCESS;
 	}
 
-
+	/**
+	* Action qui affiche l'index du site avec une liste de messages aléatoires
+	* @author Duret Nicolas
+	*/
 	public static function index($request,$context)
 	{
 		$context->setLayout("layout");
+
+		$number = 5;
+		if (!empty($request['number']) && $request['number'] >= 0)
+			$number = strip_tags($request['number']);
+
+		$context->messages = messageTable::getRandMessages($number);
+		$context->number = $number;
 
 		return context::SUCCESS;
 	}
