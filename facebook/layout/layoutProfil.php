@@ -19,7 +19,7 @@
 					<div class="col-sm-3">
 						<?php include($template_view); ?>
 						<br>
-						<?php addView("chat"); ?>
+						<div class="visible-md visible-lg"><?php addView("chat"); ?></div>
 					</div>
 					<div class="col-sm-6">
 						<?php addView("sendMessage"); ?>

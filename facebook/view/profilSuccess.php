@@ -19,6 +19,15 @@
 			</button>
 		</form>
 	</div>
+	<div class="row center">
+		<form id="form_avatar" class="col-xs-12" action="facebook.php?action=profil" method="POST">
+			<input id="notif_avatar" type="hidden" name="notif_avatar" value="<?=htmlspecialchars($context->notif)?>">
+			<input id="texte_avatar" class="col-sm-12 col-md-offset-1 col-md-8" type="text" name="modif_avatar" placeholder="Changer avatar"/>
+			<button id="avatar_submit" type="submit" class="col-md-2 btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+		</form>
+	</div>
 	<br>
 	<?php endif; ?>
 </div>

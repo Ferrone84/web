@@ -2,7 +2,7 @@
 	<header id="header" class="col-xs-12">
 		<div class="row" id="header-infos">
 			<div class="visible-lg col-lg-2" id="header-image-facebook">
-				<img src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png" id="img-facebook">
+				<a href="facebook.php?action=index"><img src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png" id="img-facebook"></a>
 			</div>
 			<div id="header-menu" class="col-sm-12 col-lg-8">
 				<ul id="header-menu-ul" class="col-xs-12">

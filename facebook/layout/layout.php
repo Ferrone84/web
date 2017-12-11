@@ -19,12 +19,12 @@
 				</div>
 				<br>
 			</div>
-		</div>
-		<footer>
-				<div class="footer col-xs-12 navbar-fixed-bottom">
+			<footer>
+				<div class="footer col-xs-12">
 					<span>&copy;Mathieu Le Veve et Nicolas Duret (vrai facebook)</span>
 				</div>
-		</footer>
+			</footer>
+		</div>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>

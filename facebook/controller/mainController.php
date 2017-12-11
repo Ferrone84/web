@@ -14,7 +14,7 @@ class mainController
 	}
 
 	/**
-	* Action pour connecter l'utilisateur et affiche l'avatar du user dans le champs profil
+	* Action qui affiche le bandeau 
 	* @author Duret Nicolas
 	*/
 	public static function headband($request, $context) {
@@ -24,8 +24,11 @@ class mainController
 			$id = strip_tags($request['id']);
 		}
 		$context->avatar_ = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-		if ($context->user_->avatar != NULL)
-			$context->avatar_ = $context->user_->avatar;
+		if ($context->user_->avatar != NULL) {
+			if (@fopen($context->user_->avatar, "r")) {
+				$context->avatar_ = $context->user_->avatar;
+			}
+		}
 
 		return context::SUCCESS;
 	}
@@ -271,16 +274,31 @@ class mainController
 		else
 			$context->user = $context->current_user;
 
-		//----- variable contenant l'avatar -----
-		$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
-		if ($context->user->avatar != NULL /*&& substr($context->user->avatar, 0, 5) === "https"*/) //on rajoutera peut être cette option pour que le site soit full https
-			$context->avatar = $context->user->avatar;
-
 		//----- modifier le statut -----
 		if (!empty($request['modif_statut'])) {
 			$context->notif = "<span class=\"success\">Vous avez bien modifié votre statut.</span>";
 			$context->user->statut = strip_tags($request['modif_statut']);
 			utilisateurTable::updateUser($context->user);
+		}
+
+		//----- modifier l'avatar -----
+		if (!empty($request['modif_avatar'])) {
+			$file = @fopen(strip_tags($request['modif_avatar']), "r");
+			if ($file) {
+				$context->notif = "<span class=\"success\">Vous avez bien modifié votre avatar.</span>";
+				$context->user->avatar = strip_tags($request['modif_avatar']);
+				utilisateurTable::updateUser($context->user);
+			}
+			else
+				$context->notif = "<span class=\"error\">Vous devez mettre un lien vers une image.</span>";
+		}
+
+		//----- variable contenant l'avatar -----
+		$context->avatar = "https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-256.png";
+		if ($context->user->avatar != NULL) {
+			if (@fopen($context->user->avatar, "r")) {
+				$context->avatar = $context->user->avatar;
+			}
 		}
 
 		return context::SUCCESS;
@@ -309,7 +327,15 @@ class mainController
 			chatTable::addChat($emetteur, $texte);
 		}
 		
-		$context->chats = array_reverse(chatTable::getXLastChats(15));
+		//si on est dans le cas où l'ajax demande s'il y a de nouveaux messages
+		if (!empty($request['refresh']))
+			$chats = chatTable::getRecentChats($request['refresh']);
+		//sinon on get les 15 derniers messages normalement
+		else
+			$chats = array_reverse(chatTable::getXLastChats(15));
+
+		$context->chats = $chats;
+		$context->lastChatId = @end($chats)->id;
 
 		return context::SUCCESS;
 	}
