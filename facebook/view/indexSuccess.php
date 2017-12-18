@@ -80,27 +80,6 @@
 						</div>
 					<?php endif; ?>
 				<?php endif; ?>
-
-                <div class="div-like">
-                    <form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
-                        <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
-                        <button type="submit" class="btn-aime btn btn-link">
-                        	<span class="glyphicon glyphicon-thumbs-up"></span>
-                        	J'aime
-                        </button>
-                    </form>
-                </div>
-
-                <div class="div-share">
-                    	<form action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->current_user->id)?>&amp;page=1" method="POST">
-                        <input type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id_share"/>
-                        <button type="submit">
-                        	<span class="glyphicon glyphicon-share"></span>
-                        	Partager
-                        </button>
-                    </form>
-                </div>
-
                 <div class="like">
 					<?php if ($message->aime != NULL) : ?>
 	                    <?php if ($message->aime >= 0) : ?>
@@ -112,6 +91,7 @@
 							0 like.
 					<?php endif; ?>
 				</div>
+				<br>
 			</div>
 		<?php endforeach; ?>
 	</div>

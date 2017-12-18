@@ -4,16 +4,19 @@
 * @author Duret Nicolas
 * @author LE VEVE Mathieu
 */
+
+//------ Partie globale ------
+isTwinkle = false;
+chat_twinkle = null;
+
 $(document).ready(function(){
 	//------ Partie Initialisation ------
 
 	//@author Duret Nicolas
 	//si le chat est sur la vue courrante
 	if ($("#chat").length) {
-		var chat_twinkle;
 		initChat();
 		refreshChat();
-		chatTwinkle();
 	}
 
 	//@author Duret Nicolas
@@ -157,7 +160,10 @@ function refreshChat() {
 				$("#nb_notif").val( +$("#nb_notif").val() + 1 ); //on incrémente la valeur du nombre de notifcations
 				numberOfNotifcations = $("#nb_notif").val();
 				$("#chat_toolbar_texte").empty().append("("+numberOfNotifcations+") Chat"); //on les affiches pour que l'utilisateur puisse voir combien de chats il a raté
-				chatTwinkle(); //on fait clignoter le chat
+				if (isTwinkle === false) {
+					chatTwinkle(); //on fait clignoter le chat
+					isTwinkle = true;
+				}
 				$("#last_id").val(new_id);
 			}
 		},
@@ -183,6 +189,7 @@ function stopChatTwinkle() {
 		$("#nb_notif").val(0);
 		clearTimeout(chat_twinkle);
 		$("#chat_toolbar").css('background-color', '#4267b2');
+		isTwinkle = false;
 	} 
 	catch (err) { }
 }
