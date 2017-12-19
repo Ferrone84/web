@@ -57,7 +57,7 @@
 				<div class="image">
 					<?php if ($message->post != NULL) : ?>
 						<?php if ($message->post->image != NULL)  : ?>
-							<?php echo (htmlspecialchars($message->post->image)) ?>
+							<img src="<?php echo (htmlspecialchars($message->post->image)) ?>">
 						<?php endif; ?>
 					<?php endif; ?>
 				</div>

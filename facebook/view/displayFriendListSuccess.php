@@ -5,12 +5,12 @@
         <?php foreach($context->users as $user) : ?>
         <div class="block">
             <p>
-            <div class="col-sm-12  col-md-4">
+            <div class="col-sm-12  col-md-4 div-img-profile">
                 <a href="facebook.php?action=profil&amp;id=<?= htmlspecialchars($user->id) ?>">
                     <?php if ($user->avatar != NULL && substr($user->avatar, 0, 4) === "http") : ?>
-                        <img class="img-circle img-profil-avatar"  src="<?= htmlspecialchars($user->avatar) ?>"/>
+                        <img class="img-circle"  src="<?= htmlspecialchars($user->avatar) ?>"/>
                     <?php else : ?>
-                        <img class="img-circle img-profil-avatar" src="<?= htmlspecialchars($context->avatar) ?>"/>
+                        <img class="img-circle" src="<?= htmlspecialchars($context->avatar) ?>"/>
                     <?php endif; ?>
             </div>
             <div class="col-sm-12 col-md-8 user-id">

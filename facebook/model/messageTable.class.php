@@ -8,7 +8,7 @@ class messageTable {
 	*
 	* @author LE VEVE Mathieu
 	*/
-	public static function addMessage($emetteur, $destinataire, $parent, $texte = NULL, $like, $image = NULL) {
+	public static function addMessage($emetteur, $destinataire, $parent, $like, $texte, $image = NULL) {
 		$em = dbconnection::getInstance()->getEntityManager();
 		
 		$post = postTable::addPost($texte, $image);

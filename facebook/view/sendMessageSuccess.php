@@ -3,8 +3,7 @@
         <textarea class = "form-control text-area" placeholder="Ecrivez un message" name="send_post"></textarea>
         <div class = "div-btn-submit">
             <div>
-                <!-- pensez a inclure / upload files-->
-                <input class="input-file" name="file" type="file" style="display : none"></input>
+                <input id="texte_avatar" class="text-center" maxlength="200" type="text" name="file" placeholder="Ajouter URL"/>
             </div>
             <div>
                 <button type="btn-submit col-sm-5">

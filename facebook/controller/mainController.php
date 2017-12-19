@@ -137,7 +137,6 @@ class mainController
 				$emetteur = utilisateurTable::getUserById($emetteur);
 				if($context->message->parent!= $emetteur) {
 					if($context->message->post !== NULL) {
-						//echo($emetteur->id.', '.$parent.', '.$context->message->post->id.', '.'0');
 						messageTable::addSharedMessage($emetteur, 
 							($context->message->parent != null ? $context->message->parent : $context->message->emetteur),
 							$context->message->post,
@@ -172,7 +171,7 @@ class mainController
 		return context::ERROR;
 	}
 
-	/* 
+	/**
 	* Action pour afficher la liste des amis enregistrés.
 	* @author LE VEVE Mathieu
 	*/
@@ -199,11 +198,17 @@ class mainController
 		}
 	}
 
-	/* 
+	/**
 	* Action qui gère la pagination.
 	* @author LE VEVE Mathieu
 	*/
-	public static function pagination($request, $context){
+	public static function pagination($request, $context) {
+
+		if (!empty($request['page'])) {
+			$context->page = strip_tags($request['page']);
+		}
+
+		else $request['page'] = 1;
 
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
@@ -212,53 +217,63 @@ class mainController
 		 if ($context->user !== NULL){
 			$context->count = count($context->messages);
 			$pagination = array();
+			$max_pagination = (int)($context->count/5);
+             if ($context->count%5 !== 0) {
+                 $max_pagination = $max_pagination+1;
+             }
 
-			for ($i = 1; $i <= (int)$context->count/5 ; $i++){
+			for ($i = $request['page']-5; $i <= $request['page']+5 && $i <= $max_pagination; $i++) {
+			    if ($i < 1) $i = 1 ;
 				$pagination[] = $i;
 			}
-
-			if ($context->count%5 !== 0){
-				$last_index = count($pagination)+1 ;
-				$pagination[$last_index] = $last_index;
-			}
-
+			$context->max_pagination = $max_pagination;
 			$context->pagination=$pagination;
 			return context::SUCCESS;
 		}
+
+		return context::ERROR;
 	}
 
-	/* 
+	/**
 	* Action qui envoie un message d'un formulaire a la liste de messages.
 	* @author LE VEVE Mathieu
 	*/
 	public static function sendMessage($request, $context){
+
 		$id = $context->getSessionAttribute('user_id');
 		$context->current_user = utilisateurTable::getUserById($id);
-
 		if (!empty($request['id'])) {
 			$id = strip_tags($request['id']);
 		}
 
 		$context->user = utilisateurTable::getUserById($id);
-
 		if ($context->user !== NULL) {
+			$emetteur = $context->getSessionAttribute('user_id');
+			$emetteur = utilisateurTable::getUserById($emetteur);
+			$destinataire = utilisateurTable::getUserById($id);
+
 			if (!empty($request['send_post'])) {
-				$texte = strip_tags($request['send_post']);	
-
-				// l'image sera ajoutée dans la base plus tard
+				$texte = strip_tags($request['send_post']);
 				if(!empty($request['file'])) {
-					$image = strip_tags($request['file']);
-				}
-
-				$emetteur = $context->getSessionAttribute('user_id');
-				$emetteur = utilisateurTable::getUserById($emetteur);
-				$destinataire = utilisateurTable::getUserById(strip_tags($request['id']));
-				messageTable::addMessage($emetteur, $destinataire, $emetteur, $texte, 0);
+                    if (strlen($request['file']) <= 200) {
+                        $image = strip_tags($request['file']);
+                        messageTable::addMessage($emetteur, $destinataire, $emetteur, 0, $texte, $image);
+                        return context::SUCCESS;
+                    }
+                    else return context::ERROR;
+                }
+				else messageTable::addMessage($emetteur, $destinataire, $emetteur, 0, $texte);
 			}
 
-            return context::SUCCESS;
+			else {
+				if(!empty($request['file'])){
+					$image = strip_tags($request['file']);
+					messageTable::addMessage($emetteur, $destinataire, $emetteur, 0, "", $image);
+				} 
+			}
+			return context::SUCCESS;
 		}
-
+        
 		else {
 			$context->user = $context->current_user;
 			return context::SUCCESS;
