@@ -1,4 +1,4 @@
-<div class = "message-list">
+<div id="message-list">
 	<div class="messages">
 		<?php foreach($context->messageList as $message) : ?>
 			<div class="message" id="<?= htmlspecialchars($message->id)?>">

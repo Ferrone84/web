@@ -7,12 +7,7 @@
 
 class mainController
 {
-	public static function helloWorld($request,$context)
-	{
-		$context->mavariable="hello world";
-		return context::SUCCESS;
-	}
-
+	
 	/**
 	* Action qui affiche le bandeau 
 	* @author Duret Nicolas
@@ -121,16 +116,12 @@ class mainController
 
 		$context->user = utilisateurTable::getUserById($id);
         if ($context->user !== NULL) {
-        	$page = 1;
-        	if (!empty($request['page'])) {
-        		$page = strip_tags($request['page']);
-        	}
-
-
+            /* Cette partie gère le like */
             if(!empty($request['mess_id'])){
                     messageTable::addLike($request['mess_id']);
             }
             
+            /* Cette partie gère le partage */
             if(!empty($request['mess_id_share'])){
 				$context->message = messageTable::getMessageById(strip_tags($request['mess_id_share']));
 				$emetteur = $context->getSessionAttribute('user_id');
@@ -145,7 +136,40 @@ class mainController
 				}
             }
 
-			$context->messages = $context->user->messages; 
+            /* Cette partie gère l'envoi de message */
+            $emetteur_message = $context->getSessionAttribute('user_id');
+            $emetteur_message = utilisateurTable::getUserById($emetteur_message);
+            $destinataire_message = utilisateurTable::getUserById($id);
+            if (!empty($request['send_post'])) {
+                $texte = strip_tags($request['send_post']);
+                if(!empty($request['file'])) {
+                    if (strlen($request['file']) <= 200) {
+                        $image = strip_tags($request['file']);
+                        messageTable::addMessage($emetteur_message, $destinataire_message, $emetteur_message, 0, $texte, $image);
+                    }
+                }
+                else messageTable::addMessage($emetteur_message, $destinataire_message, $emetteur_message, 0, $texte);
+            }
+
+            else {
+                if (!empty($request['file'])) {
+                    $image = strip_tags($request['file']);
+                    messageTable::addMessage($emetteur_message, $destinataire_message, $emetteur_message, 0, "", $image);
+                }
+            }
+
+            /* Cette partie gère l'affichage des messages */
+            $context->messages = $context->user->messages;
+            $page = 1;
+        	$context->count = count($context->messages);
+			$max_pagination = (int)($context->count/5);
+			if ($context->count%5 !== 0) {
+				$max_pagination = $max_pagination+1;
+			}
+			// echo($max_pagination);
+        	if (!empty($request['page']) && $request['page'] > 0 && $request['page'] <= $max_pagination) {
+        		$page = strip_tags($request['page']);
+        	}
 			if($context->messages[0] != NULL) { 
 			//vérifie si l'utilisateur a des messages
 				$messages = array();
@@ -204,34 +228,30 @@ class mainController
 	*/
 	public static function pagination($request, $context) {
 
-		if (!empty($request['page'])) {
-			$context->page = strip_tags($request['page']);
+		$page = 1;
+		$context->count = count($context->messages);
+		$max_pagination = (int)($context->count/5);
+		if ($context->count%5 !== 0) {
+			$max_pagination = $max_pagination+1;
 		}
 
-		else $request['page'] = 1;
-
-		if (!empty($request['id'])) {
-			$id = strip_tags($request['id']);
+		if (!empty($request['page']) && $request['page'] > 0 && $request['page'] <= $max_pagination) {
+			$page = strip_tags($request['page']);
 		}
+		$context->page = $page;
 
-		 if ($context->user !== NULL){
-			$context->count = count($context->messages);
+		if ($context->user !== NULL) {
+			
 			$pagination = array();
-			$max_pagination = (int)($context->count/5);
-             if ($context->count%5 !== 0) {
-                 $max_pagination = $max_pagination+1;
-             }
-
-			for ($i = $request['page']-5; $i <= $request['page']+5 && $i <= $max_pagination; $i++) {
+			for ($i = $page-5; $i <= $page+5 && $i <= $max_pagination; $i++) {
 			    if ($i < 1) $i = 1 ;
 				$pagination[] = $i;
 			}
+
 			$context->max_pagination = $max_pagination;
 			$context->pagination=$pagination;
-			return context::SUCCESS;
 		}
-
-		return context::ERROR;
+		return context::SUCCESS;
 	}
 
 	/**
@@ -239,45 +259,7 @@ class mainController
 	* @author LE VEVE Mathieu
 	*/
 	public static function sendMessage($request, $context){
-
-		$id = $context->getSessionAttribute('user_id');
-		$context->current_user = utilisateurTable::getUserById($id);
-		if (!empty($request['id'])) {
-			$id = strip_tags($request['id']);
-		}
-
-		$context->user = utilisateurTable::getUserById($id);
-		if ($context->user !== NULL) {
-			$emetteur = $context->getSessionAttribute('user_id');
-			$emetteur = utilisateurTable::getUserById($emetteur);
-			$destinataire = utilisateurTable::getUserById($id);
-
-			if (!empty($request['send_post'])) {
-				$texte = strip_tags($request['send_post']);
-				if(!empty($request['file'])) {
-                    if (strlen($request['file']) <= 200) {
-                        $image = strip_tags($request['file']);
-                        messageTable::addMessage($emetteur, $destinataire, $emetteur, 0, $texte, $image);
-                        return context::SUCCESS;
-                    }
-                    else return context::ERROR;
-                }
-				else messageTable::addMessage($emetteur, $destinataire, $emetteur, 0, $texte);
-			}
-
-			else {
-				if(!empty($request['file'])){
-					$image = strip_tags($request['file']);
-					messageTable::addMessage($emetteur, $destinataire, $emetteur, 0, "", $image);
-				} 
-			}
-			return context::SUCCESS;
-		}
-        
-		else {
-			$context->user = $context->current_user;
-			return context::SUCCESS;
-		}
+		return context::SUCCESS;
 	}
 
 	/**

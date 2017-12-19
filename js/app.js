@@ -106,6 +106,7 @@ $(document).ready(function(){
 	$(".send-form").submit(function(event){
 		event.preventDefault(); //évite le comportement par défaut du bouton
 		var form = this;
+		console.log(this);
 		messageUpdate(form);
 	});
 
@@ -350,46 +351,54 @@ function likeUpdate(form, id) {
 * @brief reste sur la page d'où provient le partage tout en partageant sur le mur
 */
 function shareUpdate(form) {
-	var data = new FormData(form);
-	data.append('btn-share', '');
+    var data = new FormData(form);
+    data.append('btn-share', '');
 
-	$.ajax({
-		type: "POST", //type de la requette ajax
-		url:'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requete
-		data: data,
-		cache: false,
-		contentType: false,
-		processData: false,
-		success: function(data)	{
-			$("#notif").html("<span class=\"success\">Vous avez bien partagé ce message.</span>");
-		},
-		error: function() {
-			$("#notif").html("<span class=\"error\">Erreur lors de la mise à jour du message.</span>");
-		}
-	});
+    $.ajax({
+        type: "POST", //type de la requette ajax
+        url: 'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requete
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            $("#notif").html("<span class=\"success\">Vous avez bien partagé ce message.</span>");
+        },
+        error: function () {
+            $("#notif").html("<span class=\"error\">Erreur lors de la mise à jour du message.</span>");
+        }
+    });
+}
 
 /**
 * @author LE VEVE Mathieu
 * @brief actualise la page showMessages
 */
 function messageUpdate(form) {
-	var data = new FormData(form);
-	data.append('btn-send', '');
+    var data = new FormData(form);
+    data.append('btn-send', '');
+    var url_ending = window.location.href;
+    url_ending = url_ending.split("profil");
+    // permet de rester sur la bonne URL (et de prendre les bons id message)
+    url_ending = url_ending[1];
+    console.log(url_ending);
 
-	$.ajax({
-		type: "POST", //type de la requette ajax
-		url:'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requete
-		data: data,
-		cache: false,
-		contentType: false,
-		processData: false,
-		success: function(data)	{
-			$("#notif").html("<span class=\"success\">Vous avez bien envoyé un nouveau message.</span>");
-		},
-		error: function() {
-			$("#notif").html("<span class=\"error\">Erreur lors de l'envoi du message.</span>");
-		}
-	});
+    $.ajax({
+        type: "POST", //type de la requette ajax
+        url: 'facebookAjax.php?action=showMessage'+url_ending, //page sur laquelle on effectue la requete
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+        	// console.log(data);
+        	// retour_view = $(data).find('#message-list').html();
+           // $("#div_profil_avatar").empty().append(retour_view);
+			$("#message-list").empty().append($(data).html());
+            $("#notif").html("<span class=\"success\">Vous avez bien envoyé un nouveau message.</span>");
+        },
+        error: function () {
+            $("#notif").html("<span class=\"error\">Erreur lors de l'envoi du message.</span>");
+        }
+    });
 }
-
-

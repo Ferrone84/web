@@ -20,6 +20,20 @@ Pour le tp4 il reste à :
 ----- Mathieu -----
 + Re gérer la pagination 
 + Finaliser Ajax sur partager
-- Finaliser Ajax pour envoie Messages
++ Finaliser Ajax pour envoie Messages
 + Ajouter l'ajout d'un fichier sur les messages
 + Finaliser Ajax pour la gestion des like
+
+
+------- Bugfix ----------
+- Description:
+	-Aller sur la dernière page sur un quelconque profil
+	-Ecrire entre 1 et 5 messages pour créer une nouvelle page
+
+	Actual:
+		Pas d'ajax pour remettre à jour la pagination dès que nouvelle page créée
+
+	Expected:
+		Pagination mise à jour proprement
+
+	Flemme ?
