@@ -1,5 +1,5 @@
 <div class="form-send-message">
-    <form action="facebook.php?action=profil&amp;id=<?= htmlspecialchars($context->user->id) ?>" method="post">
+    <form class="send-form" action="facebook.php?action=profil&amp;id=<?= htmlspecialchars($context->user->id) ?>" method="post">
         <textarea class = "form-control text-area" placeholder="Ecrivez un message" name="send_post"></textarea>
         <div class = "div-btn-submit">
             <div>

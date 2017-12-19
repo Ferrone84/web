@@ -74,28 +74,39 @@ $(document).ready(function(){
 		sendChat(form);
 	});
 
-	/*
+	/**
 	* @author LE VEVE Mathieu
 	* @brief si on appuie sur le bouton like
 	*
 	*
 	*/
-	$(".like_form").submit(function(event){
-		event.preventDefault(); //évite le comportement par défault du bouton
+	$(".like-form").submit(function(event){
+		event.preventDefault(); //évite le comportement par défaut du bouton
 		var form = this;
 		id = $(this).find(".hidden-id").val();
-		likeUpdating(form,id);
+		likeUpdate(form,id);
 	});
 
-	/*
+	/**
 	* @author LE VEVE Mathieu
 	* @brief si on appuie sur le bouton partager
 	*
 	*/
 	$(".share-form").submit(function(event){
-		event.preventDefault(); //évite le comportement par défault du bouton
+		event.preventDefault(); //évite le comportement par défaut du bouton
 		var form = this;
-		shareUpdating(form);
+		shareUpdate(form);
+	});
+
+	/**
+	* @author LE VEVE Mathieu
+	* @brief si on appuie sur "envoyer un message"
+	*
+	*/
+	$(".send-form").submit(function(event){
+		event.preventDefault(); //évite le comportement par défaut du bouton
+		var form = this;
+		messageUpdate(form);
 	});
 
 });
@@ -252,8 +263,8 @@ function updateAvatar(form) {
 		processData: false,
 		success: function(data)	{
 			var hiddenValueNotif = $('#notif_avatar', $(data)).val(); //récuppère ce que contient le context->notif
-			retour_view = $(data).find('#profil_avatar').html(); //récuppère tout ce qui est contenu dans la div avec l'id profil_avatar
-			$("#profil_avatar").empty().append(retour_view);
+			retour_view = $(data).find('#div_profil_avatar').html(); //récuppère tout ce qui est contenu dans la div avec l'id profil_avatar
+			$("#div_profil_avatar").empty().append(retour_view);
 			form.reset(); //reset tous les champs du formulaire
 			$("#avatar_submit").blur(); //enlève le focus du bouton
 			$("#notif").html(hiddenValueNotif);
@@ -291,14 +302,14 @@ function sendChat(form) {
 	});
 }
 
-/*
+/**
 * @author LE VEVE Mathieu
 * @brief Cette fonction ajax permet de mettre à jour le champ like selon l'id d'un message récupéré par la fonction
 * 		js. 
 *
 *
 */
-function likeUpdating(form, id) {
+function likeUpdate(form, id) {
 	var data = new FormData(form);
 	data.append('send_like', '');
 	var url_ending = window.location.href;
@@ -334,20 +345,13 @@ function likeUpdating(form, id) {
 	});
 }
 
-/*
+/**
 * @author LE VEVE Mathieu
-* @brief 
-* statut: fini mais a re factoriser pour traiter un cas  !! 
-*
+* @brief reste sur la page d'où provient le partage tout en partageant sur le mur
 */
-function shareUpdating(form) {
+function shareUpdate(form) {
 	var data = new FormData(form);
 	data.append('btn-share', '');
-	var url = window.location.href;
-	url_ending = url.split("profil");
-	// permet de rester sur la bonne URL (et de prendre les bons id message)
-	url_ending = url_ending[1];
-	// récupère tout ce qui se trouve après "profil"
 
 	$.ajax({
 		type: "POST", //type de la requette ajax
@@ -361,6 +365,29 @@ function shareUpdating(form) {
 		},
 		error: function() {
 			$("#notif").html("<span class=\"error\">Erreur lors de la mise à jour du message.</span>");
+		}
+	});
+
+/**
+* @author LE VEVE Mathieu
+* @brief actualise la page showMessages
+*/
+function messageUpdate(form) {
+	var data = new FormData(form);
+	data.append('btn-send', '');
+
+	$.ajax({
+		type: "POST", //type de la requette ajax
+		url:'facebookAjax.php?action=showMessage', //page sur laquelle on effectue la requete
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(data)	{
+			$("#notif").html("<span class=\"success\">Vous avez bien envoyé un nouveau message.</span>");
+		},
+		error: function() {
+			$("#notif").html("<span class=\"error\">Erreur lors de l'envoi du message.</span>");
 		}
 	});
 }

@@ -71,7 +71,7 @@
 				<?php endif; ?>
 
                 <div class="div-like">
-                    <form class="like_form" action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
+                    <form class="like-form" action="facebook.php?action=profil&amp;id=<?=htmlspecialchars($context->user->id)?><?=htmlspecialchars($context->page)?>" method="POST">
                         <input class="hidden-id" type="hidden" value="<?= htmlspecialchars($message->id)?>" name="mess_id"/>
                         <button id="send_like" type="submit" class="btn-aime btn btn-link">
                         	<span class="glyphicon glyphicon-thumbs-up"></span>

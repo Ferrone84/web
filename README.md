@@ -18,8 +18,8 @@ Pour le tp4 il reste à :
 + faire un accueil avec des messages random
 
 ----- Mathieu -----
-- Re gérer la pagination (ajout Previous/ Next)
-- Finaliser Ajax sur partager
++ Re gérer la pagination 
++ Finaliser Ajax sur partager
 - Finaliser Ajax pour envoie Messages
-- Ajouter l'ajout d'un fichier sur les messages
++ Ajouter l'ajout d'un fichier sur les messages
 + Finaliser Ajax pour la gestion des like

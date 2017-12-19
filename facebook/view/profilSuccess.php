@@ -1,5 +1,5 @@
 <div id="profil">
-	<div class="row">
+	<div class="row" id="div_profil_avatar">
 		<img id="profil_avatar" class="col-xs-offset-3 col-xs-6 img-circle" src="<?= htmlspecialchars($context->avatar) ?>">
 	</div>
 	<br>
