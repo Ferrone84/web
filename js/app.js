@@ -252,8 +252,8 @@ function updateAvatar(form) {
 		processData: false,
 		success: function(data)	{
 			var hiddenValueNotif = $('#notif_avatar', $(data)).val(); //récuppère ce que contient le context->notif
-			retour_view = $(data).find('#profil_avatar').html(); //récuppère tout ce qui est contenu dans la div avec l'id profil_avatar
-			$("#profil_avatar").empty().append(retour_view);
+			retour_view = $(data).find('#div_profil_avatar').html(); //récuppère tout ce qui est contenu dans la div avec l'id profil_avatar
+			$("#div_profil_avatar").empty().append(retour_view);
 			form.reset(); //reset tous les champs du formulaire
 			$("#avatar_submit").blur(); //enlève le focus du bouton
 			$("#notif").html(hiddenValueNotif);
