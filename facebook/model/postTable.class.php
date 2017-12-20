@@ -2,6 +2,12 @@
 require_once "post.class.php";
 
 class postTable {
+
+	/**
+	* Renvoie le post avec l'id $id
+	*
+	* @author Duret Nicolas
+	*/
 	public static function getPostById($id) {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 

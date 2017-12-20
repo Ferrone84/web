@@ -113,7 +113,6 @@ a {
 	height:600px;
 	background-color:#F8F8FF;
 	overflow-y: scroll;
-	/*padding: 15px 0 0 0;*/
 }
 
 .user-label{
@@ -130,9 +129,7 @@ a {
 	color: #90949c;
 }
 
-
 .user-id:hover a{
-	/*padding: 0 0 0 0;*/
 	color:  #FF0000;
 }
 

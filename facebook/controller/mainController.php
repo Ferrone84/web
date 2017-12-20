@@ -1,7 +1,18 @@
 <?php
 /*
  * All doc on :
- * Toutes les actions disponibles dans l'application 
+ *	Toutes les actions disponibles dans l'application 
+ *	
+ *	headband
+ *	index
+ *	login
+ *	logout
+ *	showMessage
+ *	displayFriendList
+ *	pagination
+ *	sendMessage
+ *	profil
+ *	chat
  *
  */
 
@@ -263,7 +274,7 @@ class mainController
 	}
 
 	/**
-	* Action pour le profil de l'utilisateur
+	* Action qui affiche le profil de l'utilisateur
 	*
 	* @author Duret Nicolas
 	*/
@@ -312,7 +323,7 @@ class mainController
 	}
 
 	/**
-	* Action pour le chat de l'utilisateur
+	* Action pour afficher le chat de l'utilisateur
 	*
 	* @author Duret Nicolas
 	*/

@@ -9,7 +9,7 @@
 	<br><br>
 </div>
 
-<div class = "message-list">
+<div id="message-list">
 	<div class="messages">
 		<?php foreach($context->messages as $message) : ?>
 			<div class="message">

@@ -3,6 +3,12 @@
 require_once "utilisateur.class.php";
 class utilisateurTable {
 
+	/**
+	* Renvoie l'utilisateur grâce à son id et son mdp
+	*
+	* @author Duret Nicolas
+	* @author LE VEVE Mathieu
+	*/
 	public static function getUserByLoginAndPass($login,$pass){
 		$em = dbconnection::getInstance()->getEntityManager() ;
 
@@ -51,8 +57,5 @@ class utilisateurTable {
 		$em = dbconnection::getInstance()->getEntityManager() ;
 		$em->flush($user);
 	}
-
 }
-//$em->persist($obj); //nouvel objet
-//$em->flush($obj); //update bdd
 ?>

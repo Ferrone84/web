@@ -67,7 +67,7 @@ class messageTable {
 	}
 
 	/**
-	* @brief Permet de récupérer tous les messages (pour le moment je n'en prends que 30, on fixera une autre valeur plus tard)
+	* @brief Permet de récupérer tous les messages
 	*
 	* @author LE VEVE Mathieu
 	*/
@@ -99,7 +99,7 @@ class messageTable {
 	}
 
 	/**
-	* Renvoie un nombre $nombre de messages aléatoire
+	* Renvoie un nombre $nombre de messages aléatoires
 	*
 	* @author Duret Nicolas
 	*/

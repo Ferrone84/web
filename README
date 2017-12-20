@@ -1,20 +1,18 @@
-/!\ Ce ReadMe servira à signaler des informations aux professeurs /!\
+Rendu du tp final ! Toutes les fonctionnalités du site sont fonctionnelles (php et js).
 
-Pour ce TP4 nous nous sommes réparties les tâches de façon à ce que Mathieu fasse la gestion du mur et des amis en Ajax, et que moi je fasse la gestion du chat et du profil en Ajax (car j'avais déjà fait la partie ajax du profil et du chat au tp3).
+Pour spécifier le code effectué par chacun, nous avons mis des tags @author.
 
-Pour spécifier le code effectué par chacun nous avons mis des tags @author.
+Travail effectué : 
 
 Mathieu :
 	Sur ce tp j'ai ajouté:
-		- La partie Ajax pour la gestion des like.
+		- La partie Ajax pour la gestion des messages.
 		- Correction de la vue showMessage concernant le partage (ne redirige plus sur le profil de l'utilisateur connecté après un partage).
-		- Correction de l'action sendMessage qui gérait le partage (deleguée a showMessage)
+		- Correction de l'action sendMessage qui gérait le partage et les messages (deleguée a showMessage)
 		- La partie Ajax pour la gestion des partage.
+		- Amélioration de la pagination côté css et fonctionnalités.
+		- Ajout de la fonctionnalité "envoyer une image".
 
 Nicolas :
 	Sur ce tp j'ai ajouté :
-		- un formulaire pour l'avatar, php et ajax fonctionnel. (il faut que le lien de l'image existe sinon l'utilisateur est notifié d'une erreur)
-		- une méthode qui récuppère tous les chats plus récent qu'un certain id
-		- chat rafraichit toutes les 10 secondes
-		- si un nouveau chat est reçus la fenêtre de chat clignote et est mise à jour
-		- un accueil avec des messages random/aléatoire
+		- J'ai simplement corrigé deux, trois problèmes liés à la mise à jour du chat, car j'avais fini tout le reste.
